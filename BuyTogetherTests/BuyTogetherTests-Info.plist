@@ -18,5 +18,18 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>1546962888860835</string>
+	<key>FacebookDisplayName</key>
+	<string>BuyTogether</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb1546962888860835</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

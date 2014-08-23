@@ -7,15 +7,40 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
+#import "LoginViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    
+    // ****************************************************************************
+    // Fill in with your Parse credentials:
+    // ****************************************************************************
+    [Parse setApplicationId:@"Gw8gq0cwugPJOMZ0KUxEzuRnvsgp8pv4Auowm3cp" clientKey:@"jiO0m40zXL32caA57C1A0bqxl922Qe5dShztFdA1"];
+    
+    // ****************************************************************************
+    // Your Facebook application id is configured in Info.plist.
+    // ****************************************************************************
+    // Configured
+    
+    // ****************************************************************************
+    // Fill in with your Venmo credentials:
+    // ****************************************************************************
     [Venmo startWithAppId:@"1914" secret:@"AFGXEU3KHee4gZCgpVskVXW9P2JY7MdY" name:@"BuyTogether"];
+    
+    [PFFacebookUtils initializeFacebook];
+    
+    // Override point for customization after application launch.
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]];
+    //self.window.rootViewController = [[LoginViewController alloc] init];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
     return YES;
-}
+
+    
+    }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     if ([[Venmo sharedInstance] handleOpenURL:url]) {
