@@ -26,6 +26,7 @@
 
 @interface FeedDetailTableViewController ()
 @property (nonatomic,strong)FeedContributionStatusTableViewCell *priceCell;
+@property (nonatomic, strong)UIRefreshControl *refreshControl;
 @end
 
 @implementation FeedDetailTableViewController
@@ -33,6 +34,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.refreshControl = [[UIRefreshControl alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    self.refreshControl.tintColor = [UIColor grayColor];
+    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
     //NSLog(@"%@",[[PFUser currentUser] objectForKey:@"profile"][@"name"]);
     // TableViewCell for feed profile
     UINib *profileNib = [UINib nibWithNibName:FeedProfileTableViewCellIdentifier bundle:nil];
@@ -76,6 +81,7 @@
         
         self.feedObject = dealObject;
         [self.tableView reloadData];
+         [self.refreshControl endRefreshing];
         
     }];
 }
