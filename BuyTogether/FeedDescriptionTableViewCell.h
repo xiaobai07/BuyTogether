@@ -1,5 +1,5 @@
 //
-//  PostDetailViewController.h
+//  FeedDescriptionTableViewCell.h
 //  BuyTogether
 //
 //  Created by Zeng Wang on 8/23/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PostDetailViewController : UIViewController
+@interface FeedDescriptionTableViewCell : UITableViewCell
 
 @end

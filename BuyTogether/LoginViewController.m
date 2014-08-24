@@ -2,8 +2,8 @@
 //  Copyright (c) 2013 Parse. All rights reserved.
 
 #import "LoginViewController.h"
-#import "UserDetailsViewController.h"
 #import <Parse/Parse.h>
+#import "FeedTableViewController.h"
 
 @implementation LoginViewController
 
@@ -14,11 +14,14 @@
     [super viewDidLoad];
     //self.title = @"Facebook Profile";
     
-    
     // Check if user is cached and linked to Facebook, if so, bypass login    
     if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
-        [self.navigationController pushViewController:[[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:NO];
+        FeedTableViewController *feedViewController = [[FeedTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        UINavigationController *feedNavigationController = [[UINavigationController alloc] initWithRootViewController:feedViewController];
+
+        [self.navigationController presentViewController:feedNavigationController animated:YES completion:nil];
     }
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -51,11 +54,17 @@
             }
         } else if (user.isNew) {
             NSLog(@"User with facebook signed up and logged in!");
-            [self.navigationController pushViewController:[[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
+            FeedTableViewController *feedViewController = [[FeedTableViewController alloc] initWithStyle:UITableViewStylePlain];
+            UINavigationController *feedNavigationController = [[UINavigationController alloc] initWithRootViewController:feedViewController];
+            
+            [self.navigationController presentViewController:feedNavigationController animated:YES completion:nil];
+            
         } else {
             NSLog(@"User with facebook logged in!");
-            [self.navigationController pushViewController:[[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
-        }
+            FeedTableViewController *feedViewController = [[FeedTableViewController alloc] initWithStyle:UITableViewStylePlain];
+            UINavigationController *feedNavigationController = [[UINavigationController alloc] initWithRootViewController:feedViewController];
+            
+            [self.navigationController presentViewController:feedNavigationController animated:YES completion:nil];        }
     }];
     
     [_activityIndicator startAnimating]; // Show loading indicator until login is finished
