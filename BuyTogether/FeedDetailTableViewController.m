@@ -21,7 +21,7 @@
 #define FeedContributeButtonTableViewCellIdenfier @"FeedContributeTableViewCell"
 
 @interface FeedDetailTableViewController ()
-
+@property (nonatomic,strong)FeedContributionStatusTableViewCell *priceCell;
 @end
 
 @implementation FeedDetailTableViewController
@@ -126,9 +126,9 @@
         return contributorCell;
     }
     else if ([indexPath section] == 3) {
-        FeedContributionStatusTableViewCell *contributionStatus = [tableView dequeueReusableCellWithIdentifier:FeedContributionStatusTableViewCellIdentifier forIndexPath:indexPath];
-        contributionStatus.selectionStyle = UITableViewCellSelectionStyleNone;
-        return contributionStatus;
+        self.priceCell = [tableView dequeueReusableCellWithIdentifier:FeedContributionStatusTableViewCellIdentifier forIndexPath:indexPath];
+        self.priceCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return self.priceCell;
     }
 
     else {
@@ -168,16 +168,70 @@
 {
     if ([indexPath section] == 4) {
         
-        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        ViewController *viewController = (ViewController *)[story instantiateViewControllerWithIdentifier:@"start"];
-        viewController.AccountTextFiedl.text = self.feedObject[@"venmo"];
-        viewController.feedId = self.feedObject.objectId;
-        [self.navigationController pushViewController:viewController animated:YES];
-                
+//        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        ViewController *viewController = (ViewController *)[story instantiateViewControllerWithIdentifier:@"start"];
+//        viewController.AccountTextFiedl.text = self.feedObject[@"venmo"];
+//        viewController.feedId = self.feedObject.objectId;
+//        [self.navigationController pushViewController:viewController animated:YES];
+        [self send];
+        
     }
     [tableView cellForRowAtIndexPath:indexPath].selected = NO;
 }
 
+- (void)send
+{
+    void(^handler)(VENTransaction *, BOOL, NSError *) = ^(VENTransaction *transaction, BOOL success, NSError *error) {
+        if (error) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:error.localizedDescription
+                                                                message:error.localizedRecoverySuggestion
+                                                               delegate:self
+                                                      cancelButtonTitle:nil
+                                                      otherButtonTitles:@"OK", nil];
+            [alertView show];
+        }
+        else {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@""
+                                                                message:@"transaction success"
+                                                               delegate:self
+                                                      cancelButtonTitle:nil
+                                                      otherButtonTitles:@"OK", nil];
+            [alertView show];
+            PFQuery *query = [PFQuery queryWithClassName:@"dealObject"];
+            
+            // Retrieve the object by id
+            [query getObjectInBackgroundWithId:self.feedObject.objectId block:^(PFObject *dealObject, NSError *error) {
+                
+                // Now let's update it with some new data. In this case, only cheatMode and score
+                // will get sent to the cloud. playerName hasn't changed.
+                if (dealObject[@"currentprice"]==[NSNull null]) {
+                    dealObject[@"currentprice"]= [NSNumber numberWithFloat:[self.priceCell.contribution.text floatValue]];
+                }else{
+                    float currentprice = [dealObject[@"currentprice"] floatValue];
+                    dealObject[@"currentprice"]= [NSNumber numberWithFloat:[self.priceCell.contribution.text floatValue]+currentprice];
+                }
+                if (dealObject[@"contributor"]==[NSNull null]) {
+                    NSArray *namearray = @[[[PFUser currentUser] objectForKey:@"profile"][@"name"]];
+                    dealObject[@"contributor"]=namearray;
+                }else{
+                    NSMutableArray *mutablearray = [[NSMutableArray alloc]init];
+                    [mutablearray addObjectsFromArray:dealObject[@"contributor"]];
+                    [mutablearray addObject:[[PFUser currentUser] objectForKey:@"profile"][@"name"]];
+                }
+                [dealObject saveInBackground];
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"refresh" object:nil];
+                
+            }];
+        }
+    };
+    // Payment
+    [[Venmo sharedInstance] sendPaymentTo:self.feedObject[@"venmo"]
+                                   amount:self.priceCell.contribution.text.floatValue*100
+                                     note:self.feedObject[@"description"]
+                        completionHandler:handler];
+
+
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
