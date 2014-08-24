@@ -15,8 +15,8 @@
 #define kFeedObjectLinkKey @"link"
 #define kFeedObjectMinimalContribution @"minprice"
 #define kFeedObjectVenmoAccoutKey @"venmo"
-#define kFeedObjectContributorsKey @"contributors"
-#define kFeedObjectOwnerKey @"owner"
+#define kFeedObjectContributorsKey @"contributor"
+#define kFeedObjectOwnerKey @"creatorid"
 #define kFeedObjectContributedAmmount @"currentPrice"
 #define kFeedObjectGoalAmount @"totalprice"
 
