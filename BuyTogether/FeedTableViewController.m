@@ -10,7 +10,7 @@
 #import "FeedTableViewCell.h"
 #import "UserDetailsViewController.h"
 #import "FeedDetailTableViewController.h"
-
+#import "NewEventViewController.h"
 #define FeedTableViewNibFileName @"FeedTableViewCell"
 #define FeedTableViewCellIdentifier @"FeedTableViewCellIdentifier"
 
@@ -72,7 +72,11 @@
 // '+' button clicked to create a new event
 - (void)addNewEvent
 {
-    
+    NewEventViewController *newEventVC = [[NewEventViewController alloc]initWithNibName:@"NewEventViewController" bundle:nil];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:newEventVC];
+    [self presentViewController:nav animated:YES completion:^{
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning

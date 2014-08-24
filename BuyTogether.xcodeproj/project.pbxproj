@@ -21,6 +21,8 @@
 		1A6CD8E219A84D770089F98D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6CD8C419A84D770089F98D /* UIKit.framework */; };
 		1A6CD8EA19A84D770089F98D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A6CD8E819A84D770089F98D /* InfoPlist.strings */; };
 		1A6CD8EC19A84D770089F98D /* BuyTogetherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6CD8EB19A84D770089F98D /* BuyTogetherTests.m */; };
+		1A6CD8FA19A98F4B0089F98D /* NewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6CD8F819A98F4B0089F98D /* NewEventViewController.m */; };
+		1A6CD8FB19A98F4B0089F98D /* NewEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A6CD8F919A98F4B0089F98D /* NewEventViewController.xib */; };
 		771527E569844BBCACD56530 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF69088F4E24E3295DB3127 /* libPods.a */; };
 		BC91BD4419A94CB900882508 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC91BD4019A94CB900882508 /* FeedTableViewController.m */; };
 		BC91BD4519A94CB900882508 /* FeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC91BD4219A94CB900882508 /* FeedTableViewCell.m */; };
@@ -80,6 +82,9 @@
 		1A6CD8E719A84D770089F98D /* BuyTogetherTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BuyTogetherTests-Info.plist"; sourceTree = "<group>"; };
 		1A6CD8E919A84D770089F98D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1A6CD8EB19A84D770089F98D /* BuyTogetherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuyTogetherTests.m; sourceTree = "<group>"; };
+		1A6CD8F719A98F4B0089F98D /* NewEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewEventViewController.h; sourceTree = "<group>"; };
+		1A6CD8F819A98F4B0089F98D /* NewEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewEventViewController.m; sourceTree = "<group>"; };
+		1A6CD8F919A98F4B0089F98D /* NewEventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewEventViewController.xib; sourceTree = "<group>"; };
 		1AF69088F4E24E3295DB3127 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC91BD3F19A94CB900882508 /* FeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
 		BC91BD4019A94CB900882508 /* FeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
@@ -255,6 +260,9 @@
 				1A6CD8D619A84D770089F98D /* ViewController.m */,
 				BC91BD3F19A94CB900882508 /* FeedTableViewController.h */,
 				BC91BD4019A94CB900882508 /* FeedTableViewController.m */,
+				1A6CD8F719A98F4B0089F98D /* NewEventViewController.h */,
+				1A6CD8F819A98F4B0089F98D /* NewEventViewController.m */,
+				1A6CD8F919A98F4B0089F98D /* NewEventViewController.xib */,
 				BCB262CE19A966E1006088BD /* FeedDetailTableViewController.h */,
 				BCB262CF19A966E1006088BD /* FeedDetailTableViewController.m */,
 			);
@@ -361,6 +369,7 @@
 				BCB262C819A95585006088BD /* event_demoProfile.png in Resources */,
 				BCB4D88419A924B0004C7B0B /* login-button-small.png in Resources */,
 				BCB262E119A96FC1006088BD /* FeedProfileTableViewCell.xib in Resources */,
+				1A6CD8FB19A98F4B0089F98D /* NewEventViewController.xib in Resources */,
 				BCB262C319A952C8006088BD /* contributorOne_demo.png in Resources */,
 				1A6CD8CB19A84D770089F98D /* InfoPlist.strings in Resources */,
 				BCB262CC19A959A2006088BD /* UserDetailsViewController.xib in Resources */,
@@ -429,6 +438,7 @@
 				1A6CD8D719A84D770089F98D /* ViewController.m in Sources */,
 				1A6CD8D119A84D770089F98D /* AppDelegate.m in Sources */,
 				BCB262CD19A959A2006088BD /* UserDetailsViewController.m in Sources */,
+				1A6CD8FA19A98F4B0089F98D /* NewEventViewController.m in Sources */,
 				BCB262E519A97358006088BD /* FeedDescriptionTableViewCell.m in Sources */,
 				BC91BD4419A94CB900882508 /* FeedTableViewController.m in Sources */,
 				BCB262E019A96FC1006088BD /* FeedProfileTableViewCell.m in Sources */,
