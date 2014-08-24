@@ -156,6 +156,7 @@
 		BCB2632319A9F199006088BD /* FeedWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedWebViewController.m; sourceTree = "<group>"; };
 		BCB2632419A9F199006088BD /* FeedWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedWebViewController.xib; sourceTree = "<group>"; };
 		BCB2632919A9FE90006088BD /* eventProfileBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = eventProfileBackground.jpg; sourceTree = "<group>"; };
+		BCB2632B19AA076D006088BD /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = constants.h; path = Resources/constants.h; sourceTree = "<group>"; };
 		BCB4D86B19A919E5004C7B0B /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		BCB4D86D19A91D56004C7B0B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		BCB4D86E19A91D56004C7B0B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -322,6 +323,7 @@
 				BCB2632219A9F199006088BD /* FeedWebViewController.h */,
 				BCB2632319A9F199006088BD /* FeedWebViewController.m */,
 				BCB2632419A9F199006088BD /* FeedWebViewController.xib */,
+				BCB2632B19AA076D006088BD /* constants.h */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";

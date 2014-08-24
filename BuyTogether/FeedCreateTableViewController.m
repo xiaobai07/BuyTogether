@@ -11,7 +11,6 @@
 //#import "FeedFormEventProfileTableViewCell.h"
 #import "FeedFormGeneralItemTableViewCell.h"
 
-
 #define FeedFormDescriptionTableViewCellIdentifier @"FeedFormDescriptionTableViewCell"
 //#define FeedFormEventProfileTableViewCellIdentifier @"FeedFormEventProfileTableViewCell"
 #define FeedFormGeneralItemTableViewCellIdentifier @"FeedFormGeneralItemTableViewCell"
@@ -79,15 +78,17 @@
     self.minimalContribution = self.minimalContributionCell.itemDataInput.text;
     self.venmoAcount = [NSString stringWithString:self.venmoCell.itemDataInput.text];
     
-    PFObject *dealObject = [PFObject objectWithClassName:@"dealObject"];
-    dealObject[@"name"] = self.eventName;
-    dealObject[@"link"] = self.productLink;
-    dealObject[@"minprice"] = self.minimalContribution;
-    dealObject[@"description"] = self.description;
-    dealObject[@"venmo"] = self.venmoAcount;
+    PFObject *dealObject = [PFObject objectWithClassName:kFeedObjectName];
+    dealObject[kFeedObjectFeedNameKey] = self.eventName;
+    dealObject[kFeedObjectLinkKey] = self.productLink;
+    dealObject[kFeedObjectMinimalContribution] = self.minimalContribution;
+    dealObject[kFeedObjectDescriptionKey] = self.description;
+    dealObject[kFeedObjectVenmoAccoutKey] = self.venmoAcount;
+  
+    //NSString *user = [NSString stringWithFormat:@"%@",[[PFUser currentUser] o//bjectForKey:@"profile"][@"name"]];
     [dealObject saveInBackground];
     [self dismissViewControllerAnimated:YES completion:^{
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"refresh" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"refresh" object:nil];
     }];
 }
 

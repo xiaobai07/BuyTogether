@@ -10,5 +10,4 @@
 
 @interface FeedDescriptionTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
 @end
