@@ -167,39 +167,39 @@
             if (i==0) {
                 NSDictionary *dictionary = contributorarray[i];
                 NSString *usrstring = dictionary[@"url"];
-                [contributorCell.contributorOneProfile setImageWithURL:[NSURL URLWithString:usrstring]];
+                [contributorCell.contributorOneProfile setImageWithURL:[NSURL URLWithString:usrstring] placeholderImage:[UIImage imageNamed:@"empty_profile"]];
             }else if(i == 1){
                 NSDictionary *dictionary = contributorarray[i];
                 NSString *usrstring = dictionary[@"url"];
-                [contributorCell.contributorTwoProfile setImageWithURL:[NSURL URLWithString:usrstring]];
+                [contributorCell.contributorTwoProfile setImageWithURL:[NSURL URLWithString:usrstring] placeholderImage:[UIImage imageNamed:@"empty_profile"]];
             }
             else if(i == 2){
                 NSDictionary *dictionary = contributorarray[i];
                 NSString *usrstring = dictionary[@"url"];
-                [contributorCell.contributorThreeProfile setImageWithURL:[NSURL URLWithString:usrstring]];
+                [contributorCell.contributorThreeProfile setImageWithURL:[NSURL URLWithString:usrstring]placeholderImage:[UIImage imageNamed:@"empty_profile"]];
             }
         }
-        if ([contributorarray count] == 0)
-        {
-            contributorCell.contributorOneProfile.hidden = YES;
-            contributorCell.contributorTwoProfile.hidden = YES;
-            contributorCell.contributorThreeProfile.hidden = YES;
-        }
-        else if ([contributorarray count] == 1)
-        {
-            contributorCell.contributorTwoProfile.hidden = YES;
-            contributorCell.contributorThreeProfile.hidden = YES;
-            contributorCell.label.hidden = YES;
-        }
-        else if ([contributorarray count] == 2)
-        {
-            contributorCell.contributorThreeProfile.hidden = YES;
-            contributorCell.label.hidden = YES;
-        }
-        else
-        {
-            contributorCell.label.hidden = YES;
-        }
+//        if ([contributorarray count] == 0)
+//        {
+//            contributorCell.contributorOneProfile.hidden = YES;
+//            contributorCell.contributorTwoProfile.hidden = YES;
+//            contributorCell.contributorThreeProfile.hidden = YES;
+//        }
+//        else if ([contributorarray count] == 1)
+//        {
+//            contributorCell.contributorTwoProfile.hidden = YES;
+//            contributorCell.contributorThreeProfile.hidden = YES;
+//            contributorCell.label.hidden = YES;
+//        }
+//        else if ([contributorarray count] == 2)
+//        {
+//            contributorCell.contributorThreeProfile.hidden = YES;
+//            contributorCell.label.hidden = YES;
+//        }
+//        else
+//        {
+//            contributorCell.label.hidden = YES;
+//        }
         return contributorCell;
     }
     else if ([indexPath section] == 4) {

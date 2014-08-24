@@ -144,47 +144,50 @@
     }];
     
     cell.eventName.text = oneFeed[kFeedObjectFeedNameKey];
+    cell.contributorOneProfile.image = nil;
+    cell.contributorTwoProfile.image = nil;
+    cell.contributorThreeProfile.image = nil;
     NSArray *contributorarray = oneFeed[kFeedObjectContributorsKey];
     for (int i=0; i<contributorarray.count; i++) {
         if (i==0) {
             NSDictionary *dictionary = contributorarray[i];
             NSString *usrstring = dictionary[@"url"];
-            [cell.contributorOneProfile setImageWithURL:[NSURL URLWithString:usrstring]];
+            [cell.contributorOneProfile setImageWithURL:[NSURL URLWithString:usrstring]placeholderImage:[UIImage imageNamed:@"empty_profile"]];
         }else if(i == 1){
             NSDictionary *dictionary = contributorarray[i];
             NSString *usrstring = dictionary[@"url"];
-            [cell.contributorTwoProfile setImageWithURL:[NSURL URLWithString:usrstring]];
+            [cell.contributorTwoProfile setImageWithURL:[NSURL URLWithString:usrstring]placeholderImage:[UIImage imageNamed:@"empty_profile"]];
         }
         else if(i == 2){
             NSDictionary *dictionary = contributorarray[i];
             NSString *usrstring = dictionary[@"url"];
-            [cell.contributorThreeProfile setImageWithURL:[NSURL URLWithString:usrstring]];
+            [cell.contributorThreeProfile setImageWithURL:[NSURL URLWithString:usrstring]placeholderImage:[UIImage imageNamed:@"empty_profile"]];
         }
     }
     // Add description
     cell.eventDescription.text = oneFeed[kFeedObjectDescriptionKey];
     
-    // Add Contributor
-    NSArray *contributors = oneFeed[kFeedObjectContributorsKey];
-    if ([contributors count] == 0)
-    {
-        cell.contributorOneProfile.hidden = YES;
-        cell.contributorTwoProfile.hidden = YES;
-        cell.contributorThreeProfile.hidden = YES;
-    }
-    else if ([contributors count] == 1)
-    {
-        cell.contributorTwoProfile.hidden = YES;
-        cell.contributorThreeProfile.hidden = YES;
-    }
-    else if ([contributors count] == 2)
-    {
-        cell.contributorThreeProfile.hidden = YES;
-    }
-    else
-    {
-        
-    }
+//    // Add Contributor
+//    NSArray *contributors = oneFeed[kFeedObjectContributorsKey];
+//    if ([contributors count] == 0)
+//    {
+//        cell.contributorOneProfile.hidden = YES;
+//        cell.contributorTwoProfile.hidden = YES;
+//        cell.contributorThreeProfile.hidden = YES;
+//    }
+//    else if ([contributors count] == 1)
+//    {
+//        cell.contributorTwoProfile.hidden = YES;
+//        cell.contributorThreeProfile.hidden = YES;
+//    }
+//    else if ([contributors count] == 2)
+//    {
+//        cell.contributorThreeProfile.hidden = YES;
+//    }
+//    else
+//    {
+//        
+//    }
 
     
     // Add deal status
