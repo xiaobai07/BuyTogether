@@ -17,6 +17,7 @@
 
 @interface FeedTableViewController ()
 @property(nonatomic, strong)NSMutableArray *feedArray;
+@property (nonatomic, strong)UIRefreshControl *refreshControl;
 @end
 
 @implementation FeedTableViewController
@@ -33,6 +34,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.refreshControl = [[UIRefreshControl alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    self.refreshControl.tintColor = [UIColor grayColor];
+    [self.refreshControl addTarget:self action:@selector(reloadData) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refresh:) name:@"refresh" object:nil];
     self.feedArray = [[NSMutableArray alloc]init];
     // Register tableviewcell classes
@@ -55,12 +60,19 @@
 
 - (void)refresh:(NSNotification *)notification
 {
+    [self reloadData];
+}
+
+- (void)reloadData
+{
+    NSLog(@"refresh");
     PFQuery *query = [PFQuery queryWithClassName:@"dealObject"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
         // comments now contains the comments for myPost
         [self.feedArray removeAllObjects];
         [self.feedArray addObjectsFromArray:array];
         [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
     }];
 }
 

@@ -24,7 +24,7 @@
                         <color key="textColor" red="0.54509806630000002" green="0.91372555489999996" blue="0.52156865600000002" alpha="1" colorSpace="deviceRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="organizer_demoProfile.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Fw-wg-ILB">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="empty_profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Fw-wg-ILB">
                         <rect key="frame" x="13" y="12" width="30" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
@@ -45,7 +45,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="empty_profile.png" width="200" height="200"/>
         <image name="eventProfileBackground.jpg" width="640" height="960"/>
-        <image name="organizer_demoProfile.png" width="160" height="160"/>
     </resources>
 </document>
