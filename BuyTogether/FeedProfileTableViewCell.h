@@ -10,9 +10,9 @@
 
 @interface FeedProfileTableViewCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UIImageView *organizerProfile;
-@property (strong, nonatomic) IBOutlet UIImageView *feedProfile;
-@property (strong, nonatomic) IBOutlet UILabel *feedName;
-@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *organizerProfile;
+@property (weak, nonatomic) IBOutlet UIImageView *feedProfile;
+@property (weak, nonatomic) IBOutlet UILabel *feedNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 @end
