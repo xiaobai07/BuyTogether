@@ -15,7 +15,7 @@
 #define FeedTableViewCellIdentifier @"FeedTableViewCellIdentifier"
 
 @interface FeedTableViewController ()
-
+@property(nonatomic, strong)NSMutableArray *feedArray;
 @end
 
 @implementation FeedTableViewController
@@ -32,17 +32,39 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refresh:) name:@"refresh" object:nil];
+    self.feedArray = [[NSMutableArray alloc]init];
     // Register tableviewcell classes
     UINib *feedTableViewCellNib = [UINib nibWithNibName:FeedTableViewNibFileName bundle:nil];
     [self.tableView registerNib:feedTableViewCellNib forCellReuseIdentifier:FeedTableViewCellIdentifier];
     
-
+    PFQuery *query = [PFQuery queryWithClassName:@"dealObject"];
+    NSArray* array = [query findObjects];
+    [self.feedArray addObjectsFromArray:array];
+    [self.tableView reloadData];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+
+- (void)refresh:(NSNotification *)notification
+{
+    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // Add code here to do background processing
+        //
+        PFQuery *query = [PFQuery queryWithClassName:@"dealObject"];
+        NSArray* array = [query findObjects];
+        [self.feedArray removeAllObjects];
+        [self.feedArray addObjectsFromArray:array];        
+        dispatch_async( dispatch_get_main_queue(), ^{
+            // Add code here to update the UI/send notifications based on the
+            // results of the background processing
+            [self.tableView reloadData];
+        });
+    });
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -95,9 +117,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning hard coded data
-    // Return the number of rows in the section.
-    return 1;
+    return self.feedArray.count;
 }
 
 
@@ -106,10 +126,8 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FeedTableViewCellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
-    
-#warning hard coded data
-    
+    PFObject *oneFeed = [self.feedArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = oneFeed[@"name"];
     return cell;
 }
 

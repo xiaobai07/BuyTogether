@@ -13,7 +13,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(login:) name:@"login" object:self];
     //self.title = @"Facebook Profile";
     
     // Check if user is cached and linked to Facebook, if so, bypass login    

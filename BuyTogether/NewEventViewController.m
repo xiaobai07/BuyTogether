@@ -44,7 +44,7 @@
     dealObject[@"venmo"] = self.venmoTextField.text;
     [dealObject saveInBackground];
     [self dismissViewControllerAnimated:YES completion:^{
-        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"refresh" object:nil];
     }];
 }
 
