@@ -9,10 +9,16 @@
 #import "FeedDetailTableViewController.h"
 #import "FeedProfileTableViewCell.h"
 #import "FeedDescriptionTableViewCell.h"
+#import "FeedContributeTableViewCell.h"
+#import "FeedContributionStatusTableViewCell.h"
+#import "FeedContributorTableViewCell.h"
+#import "FeedWebViewTableViewCell.h"
 
-#define UITableViewCellIdentifier @"UITableViewCell"
-#define FeedDescriptionTableViewIdentifier @"FeedDescriptionTableViewCell"
 #define FeedProfileTableViewCellIdentifier @"FeedProfileTableViewCell"
+#define FeedDescriptionTableViewIdentifier @"FeedDescriptionTableViewCell"
+#define FeedContributorTableViewCellIdentifier @"FeedContributorTableViewCell"
+#define FeedContributionStatusTableViewCellIdentifier @"FeedContributionStatusTableViewCell"
+#define FeedContributeButtonTableViewCellIdenfier @"FeedContributeTableViewCell"
 
 @interface FeedDetailTableViewController ()
 
@@ -24,9 +30,6 @@
 {
     [super viewDidLoad];
     
-    // TableViewCell for feed name
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:UITableViewCellIdentifier];
-    
     // TableViewCell for feed profile
     UINib *profileNib = [UINib nibWithNibName:FeedProfileTableViewCellIdentifier bundle:nil];
     [self.tableView registerNib:profileNib forCellReuseIdentifier:FeedProfileTableViewCellIdentifier];
@@ -34,7 +37,20 @@
     // TableViewCell for feed description
     UINib *descriptionNib = [UINib nibWithNibName:FeedDescriptionTableViewIdentifier bundle:nil];
     [self.tableView registerNib:descriptionNib forCellReuseIdentifier:FeedDescriptionTableViewIdentifier];
-
+    
+    // TableViewCell for feed contributors
+    UINib *contributorNib = [UINib nibWithNibName:FeedContributorTableViewCellIdentifier bundle:nil];
+    [self.tableView registerNib:contributorNib forCellReuseIdentifier:FeedContributorTableViewCellIdentifier];
+    
+    
+    // TableViewCell for feed contribution status
+    UINib *contributionStatusNib = [UINib nibWithNibName:FeedContributionStatusTableViewCellIdentifier bundle:nil];
+    [self.tableView registerNib:contributionStatusNib forCellReuseIdentifier:FeedContributionStatusTableViewCellIdentifier];
+    
+    // TableViewCell for feed contribute button
+    UINib *contributeButtonNib = [UINib nibWithNibName:FeedContributeButtonTableViewCellIdenfier bundle:nil];
+    [self.tableView registerNib:contributeButtonNib forCellReuseIdentifier:FeedContributeButtonTableViewCellIdenfier];
+    
     self.navigationItem.title = @"Feed Detail";
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -56,11 +72,11 @@
     // 1 - Name, FeedProfile, TimeLeft
     // 2 - Description
     // 3 - Contributors
-    // 4 - Status
-    // 5 - Contribute
+    // 4 - Contribution status
+    // 5 - Contribute button
     
     // Return the number of sections.
-    return 2;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -72,38 +88,77 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([indexPath section] == 0) {
+    // 1 - Name, FeedProfile, TimeLeft
+    // 2 - Description
+    // 3 - Contributors
+    // 4 - Contribution status
+    // 5 - Contribute button
+    if ([indexPath section] == 0){
         FeedProfileTableViewCell *cellProfile = [tableView dequeueReusableCellWithIdentifier:FeedProfileTableViewCellIdentifier forIndexPath:indexPath];
+        cellProfile.selectionStyle = UITableViewCellSelectionStyleNone;
         return cellProfile;
     }
-    else {
+    else if ([indexPath section] == 1){
         FeedDescriptionTableViewCell *cellDescription = [tableView dequeueReusableCellWithIdentifier:FeedDescriptionTableViewIdentifier forIndexPath:indexPath];
+        cellDescription.selectionStyle = UITableViewCellSelectionStyleNone;
         return cellDescription;
-
+        
     }
-//    else if ([indexPath section] == 3) {
-//        
-//    }
-//    else if ([indexPath section] == 4) {
-//        
-//    }
-//    else if ([indexPath section] == 5) {
-//        
-//    }
-    
-    // Configure the cell...
+    else if ([indexPath section] == 2) {
+        FeedContributorTableViewCell *contributorCell = [tableView dequeueReusableCellWithIdentifier:FeedContributorTableViewCellIdentifier forIndexPath:indexPath];
+        contributorCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return contributorCell;
+    }
+    else if ([indexPath section] == 3) {
+        FeedContributionStatusTableViewCell *contributionStatus = [tableView dequeueReusableCellWithIdentifier:FeedContributionStatusTableViewCellIdentifier forIndexPath:indexPath];
+        contributionStatus.selectionStyle = UITableViewCellSelectionStyleNone;
+        return contributionStatus;
+    }
+
+    else {
+        FeedContributeTableViewCell *contributionButtonCell = [tableView dequeueReusableCellWithIdentifier:FeedContributeButtonTableViewCellIdenfier forIndexPath:indexPath];
+        return contributionButtonCell;
+        
+    }
 }
 
-- (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // 1 - Name, FeedProfile, TimeLeft
+    // 2 - Description
+    // 3 - Contributors
+    // 4 - Contribution status
+    // 5 - Contribute button
+    
     if ([indexPath section] == 0) {
-        return 140;
+        return 80;
     }
     else if ([indexPath section] == 1) {
+        return 175;
+    }
+    else if ([indexPath section] == 2) {
+        return 75;
+    }
+    else if ([indexPath section] == 3) {
         return 100;
+    }
+    else if ([indexPath section] == 4) {
+        return 70;
     }
     return 44;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([indexPath section] == 4) {
+#warning Venmo
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Payment" message:@
+                                  "Thank your for your contribution."delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alertView show];
+    }
+    [tableView cellForRowAtIndexPath:indexPath].selected = NO;
+}
+
 
 /*
 // Override to support conditional editing of the table view.

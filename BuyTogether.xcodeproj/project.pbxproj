@@ -37,6 +37,13 @@
 		BCB262E119A96FC1006088BD /* FeedProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB262DF19A96FC1006088BD /* FeedProfileTableViewCell.xib */; };
 		BCB262E519A97358006088BD /* FeedDescriptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB262E319A97358006088BD /* FeedDescriptionTableViewCell.m */; };
 		BCB262E619A97358006088BD /* FeedDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB262E419A97358006088BD /* FeedDescriptionTableViewCell.xib */; };
+		BCB262EA19A97AF7006088BD /* FeedContributorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB262E819A97AF7006088BD /* FeedContributorTableViewCell.m */; };
+		BCB262EB19A97AF7006088BD /* FeedContributorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB262E919A97AF7006088BD /* FeedContributorTableViewCell.xib */; };
+		BCB262EF19A97F4A006088BD /* FeedContributionStatusTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB262ED19A97F4A006088BD /* FeedContributionStatusTableViewCell.m */; };
+		BCB262F019A97F4A006088BD /* FeedContributionStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB262EE19A97F4A006088BD /* FeedContributionStatusTableViewCell.xib */; };
+		BCB262F219A98286006088BD /* dollar_sign.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BCB262F119A98286006088BD /* dollar_sign.jpg */; };
+		BCB262F619A985AD006088BD /* FeedContributeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB262F419A985AD006088BD /* FeedContributeTableViewCell.m */; };
+		BCB262F719A985AD006088BD /* FeedContributeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB262F519A985AD006088BD /* FeedContributeTableViewCell.xib */; };
 		BCB4D86C19A919E5004C7B0B /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB4D86B19A919E5004C7B0B /* FacebookSDK.framework */; };
 		BCB4D87019A91D56004C7B0B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB4D86D19A91D56004C7B0B /* Bolts.framework */; };
 		BCB4D87119A91D56004C7B0B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB4D86E19A91D56004C7B0B /* Parse.framework */; };
@@ -102,6 +109,16 @@
 		BCB262E219A97358006088BD /* FeedDescriptionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedDescriptionTableViewCell.h; sourceTree = "<group>"; };
 		BCB262E319A97358006088BD /* FeedDescriptionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedDescriptionTableViewCell.m; sourceTree = "<group>"; };
 		BCB262E419A97358006088BD /* FeedDescriptionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedDescriptionTableViewCell.xib; sourceTree = "<group>"; };
+		BCB262E719A97AF7006088BD /* FeedContributorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedContributorTableViewCell.h; sourceTree = "<group>"; };
+		BCB262E819A97AF7006088BD /* FeedContributorTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedContributorTableViewCell.m; sourceTree = "<group>"; };
+		BCB262E919A97AF7006088BD /* FeedContributorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedContributorTableViewCell.xib; sourceTree = "<group>"; };
+		BCB262EC19A97F4A006088BD /* FeedContributionStatusTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedContributionStatusTableViewCell.h; sourceTree = "<group>"; };
+		BCB262ED19A97F4A006088BD /* FeedContributionStatusTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedContributionStatusTableViewCell.m; sourceTree = "<group>"; };
+		BCB262EE19A97F4A006088BD /* FeedContributionStatusTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedContributionStatusTableViewCell.xib; sourceTree = "<group>"; };
+		BCB262F119A98286006088BD /* dollar_sign.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dollar_sign.jpg; sourceTree = "<group>"; };
+		BCB262F319A985AD006088BD /* FeedContributeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedContributeTableViewCell.h; sourceTree = "<group>"; };
+		BCB262F419A985AD006088BD /* FeedContributeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedContributeTableViewCell.m; sourceTree = "<group>"; };
+		BCB262F519A985AD006088BD /* FeedContributeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedContributeTableViewCell.xib; sourceTree = "<group>"; };
 		BCB4D86B19A919E5004C7B0B /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		BCB4D86D19A91D56004C7B0B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		BCB4D86E19A91D56004C7B0B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -227,6 +244,7 @@
 		BCB262BE19A952C8006088BD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BCB262F119A98286006088BD /* dollar_sign.jpg */,
 				BCB4D87A19A924B0004C7B0B /* login-button-small@2x.png */,
 				BCB4D87B19A924B0004C7B0B /* login-button-small.png */,
 				BCB4D87C19A924B0004C7B0B /* login-button-small-pressed@2x.png */,
@@ -273,6 +291,15 @@
 				BCB262E219A97358006088BD /* FeedDescriptionTableViewCell.h */,
 				BCB262E319A97358006088BD /* FeedDescriptionTableViewCell.m */,
 				BCB262E419A97358006088BD /* FeedDescriptionTableViewCell.xib */,
+				BCB262E719A97AF7006088BD /* FeedContributorTableViewCell.h */,
+				BCB262E819A97AF7006088BD /* FeedContributorTableViewCell.m */,
+				BCB262E919A97AF7006088BD /* FeedContributorTableViewCell.xib */,
+				BCB262EC19A97F4A006088BD /* FeedContributionStatusTableViewCell.h */,
+				BCB262ED19A97F4A006088BD /* FeedContributionStatusTableViewCell.m */,
+				BCB262EE19A97F4A006088BD /* FeedContributionStatusTableViewCell.xib */,
+				BCB262F319A985AD006088BD /* FeedContributeTableViewCell.h */,
+				BCB262F419A985AD006088BD /* FeedContributeTableViewCell.m */,
+				BCB262F519A985AD006088BD /* FeedContributeTableViewCell.xib */,
 			);
 			name = TableViewCell;
 			sourceTree = "<group>";
@@ -359,15 +386,19 @@
 				1A6CD8D919A84D770089F98D /* Images.xcassets in Resources */,
 				BCB262C419A952C8006088BD /* contributorThree_demoProfile.png in Resources */,
 				BCB262C819A95585006088BD /* event_demoProfile.png in Resources */,
+				BCB262F219A98286006088BD /* dollar_sign.jpg in Resources */,
 				BCB4D88419A924B0004C7B0B /* login-button-small.png in Resources */,
 				BCB262E119A96FC1006088BD /* FeedProfileTableViewCell.xib in Resources */,
+				BCB262EB19A97AF7006088BD /* FeedContributorTableViewCell.xib in Resources */,
 				BCB262C319A952C8006088BD /* contributorOne_demo.png in Resources */,
+				BCB262F719A985AD006088BD /* FeedContributeTableViewCell.xib in Resources */,
 				1A6CD8CB19A84D770089F98D /* InfoPlist.strings in Resources */,
 				BCB262CC19A959A2006088BD /* UserDetailsViewController.xib in Resources */,
 				BCB4D88119A924B0004C7B0B /* LoginViewController.xib in Resources */,
 				BCB4D88619A924B0004C7B0B /* login-button-small-pressed.png in Resources */,
 				BCB4D88819A92728004C7B0B /* FacebookSignupButton.png in Resources */,
 				BCB4D88019A924B0004C7B0B /* TableHeaderView.xib in Resources */,
+				BCB262F019A97F4A006088BD /* FeedContributionStatusTableViewCell.xib in Resources */,
 				BCB262C519A952C8006088BD /* contributorTwo_demoProfile.png in Resources */,
 				BC91BD4619A94CB900882508 /* FeedTableViewCell.xib in Resources */,
 				BCB4D88319A924B0004C7B0B /* login-button-small@2x.png in Resources */,
@@ -430,10 +461,13 @@
 				1A6CD8D119A84D770089F98D /* AppDelegate.m in Sources */,
 				BCB262CD19A959A2006088BD /* UserDetailsViewController.m in Sources */,
 				BCB262E519A97358006088BD /* FeedDescriptionTableViewCell.m in Sources */,
+				BCB262F619A985AD006088BD /* FeedContributeTableViewCell.m in Sources */,
 				BC91BD4419A94CB900882508 /* FeedTableViewController.m in Sources */,
 				BCB262E019A96FC1006088BD /* FeedProfileTableViewCell.m in Sources */,
+				BCB262EF19A97F4A006088BD /* FeedContributionStatusTableViewCell.m in Sources */,
 				BC91BD4519A94CB900882508 /* FeedTableViewCell.m in Sources */,
 				1A6CD8CD19A84D770089F98D /* main.m in Sources */,
+				BCB262EA19A97AF7006088BD /* FeedContributorTableViewCell.m in Sources */,
 				BCB4D88219A924B0004C7B0B /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
