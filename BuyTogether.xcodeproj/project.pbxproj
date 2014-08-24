@@ -46,6 +46,7 @@
 		BCB262F219A98286006088BD /* dollar_sign.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BCB262F119A98286006088BD /* dollar_sign.jpg */; };
 		BCB262F619A985AD006088BD /* FeedContributeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB262F419A985AD006088BD /* FeedContributeTableViewCell.m */; };
 		BCB262F719A985AD006088BD /* FeedContributeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB262F519A985AD006088BD /* FeedContributeTableViewCell.xib */; };
+		BCB2630019A9AAF8006088BD /* contribution_percentage.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB262FF19A9AAF8006088BD /* contribution_percentage.png */; };
 		BCB4D86C19A919E5004C7B0B /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB4D86B19A919E5004C7B0B /* FacebookSDK.framework */; };
 		BCB4D87019A91D56004C7B0B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB4D86D19A91D56004C7B0B /* Bolts.framework */; };
 		BCB4D87119A91D56004C7B0B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB4D86E19A91D56004C7B0B /* Parse.framework */; };
@@ -124,6 +125,7 @@
 		BCB262F319A985AD006088BD /* FeedContributeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedContributeTableViewCell.h; sourceTree = "<group>"; };
 		BCB262F419A985AD006088BD /* FeedContributeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedContributeTableViewCell.m; sourceTree = "<group>"; };
 		BCB262F519A985AD006088BD /* FeedContributeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedContributeTableViewCell.xib; sourceTree = "<group>"; };
+		BCB262FF19A9AAF8006088BD /* contribution_percentage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contribution_percentage.png; sourceTree = "<group>"; };
 		BCB4D86B19A919E5004C7B0B /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		BCB4D86D19A91D56004C7B0B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		BCB4D86E19A91D56004C7B0B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 		BCB262BE19A952C8006088BD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BCB262FF19A9AAF8006088BD /* contribution_percentage.png */,
 				BCB262F119A98286006088BD /* dollar_sign.jpg */,
 				BCB4D87A19A924B0004C7B0B /* login-button-small@2x.png */,
 				BCB4D87B19A924B0004C7B0B /* login-button-small.png */,
@@ -402,6 +405,7 @@
 				BCB262C319A952C8006088BD /* contributorOne_demo.png in Resources */,
 				BCB262F719A985AD006088BD /* FeedContributeTableViewCell.xib in Resources */,
 				1A6CD8CB19A84D770089F98D /* InfoPlist.strings in Resources */,
+				BCB2630019A9AAF8006088BD /* contribution_percentage.png in Resources */,
 				BCB262CC19A959A2006088BD /* UserDetailsViewController.xib in Resources */,
 				BCB4D88119A924B0004C7B0B /* LoginViewController.xib in Resources */,
 				BCB4D88619A924B0004C7B0B /* login-button-small-pressed.png in Resources */,
