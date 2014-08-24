@@ -38,7 +38,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="textColor" red="0.086274512110000007" green="0.74117648599999997" blue="0.15686275059999999" alpha="1" colorSpace="deviceRGB"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+<<<<<<< HEAD
                         <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+=======
+                        <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+>>>>>>> db08b9d2cd727f6a06cb2354ca4a0872ea81b033
                     </textField>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="contribution_percentage.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZdU-fd-3nm">
                         <rect key="frame" x="28" y="5" width="90" height="90"/>
