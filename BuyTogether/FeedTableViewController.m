@@ -135,7 +135,7 @@
     
     FeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FeedTableViewCellIdentifier forIndexPath:indexPath];
     PFObject *oneFeed = [self.feedArray objectAtIndex:indexPath.row];
-    
+    // Set profile
     NSString *creatorid = oneFeed[@"creatorid"];
     PFQuery *userQuery = [PFUser query];
     [userQuery whereKey:@"objectId" equalTo:creatorid];
@@ -143,8 +143,54 @@
     PFObject *user = userArray[0];
     NSString *usrstring = user[@"profile"][@"pictureURL"];
     [cell.oragnizerProfile setImageWithURL:[NSURL URLWithString:usrstring]];
-    cell.eventName.text = oneFeed[@"name"];
+    cell.eventName.text = oneFeed[kFeedObjectFeedNameKey];
     
+    // Add description
+    cell.eventDescription.text = oneFeed[kFeedObjectDescriptionKey];
+    
+    // Add Contributor
+    NSArray *contributors = oneFeed[kFeedObjectContributorsKey];
+    if ([contributors count] == 0)
+    {
+        cell.contributorOneProfile.hidden = YES;
+        cell.contributorTwoProfile.hidden = YES;
+        cell.contributorThreeProfile.hidden = YES;
+    }
+    else if ([contributors count] == 1)
+    {
+        cell.contributorTwoProfile.hidden = YES;
+        cell.contributorThreeProfile.hidden = YES;
+    }
+    else if ([contributors count] == 2)
+    {
+        cell.contributorThreeProfile.hidden = YES;
+    }
+    else
+    {
+        
+    }
+
+    
+    // Add deal status
+    NSString *totalContributionNeeded;
+    if (oneFeed[kFeedObjectGoalAmount])
+    {
+        totalContributionNeeded = [NSString stringWithString:oneFeed[kFeedObjectGoalAmount]];
+    }
+    else {
+        totalContributionNeeded = @"0";
+    }
+
+    NSString *contributedAmountString;
+    if (oneFeed[kFeedObjectContributedAmmount])
+    {
+        contributedAmountString = [NSString stringWithFormat:@"%@", oneFeed[kFeedObjectContributedAmmount]];
+    }
+    else {
+        contributedAmountString = @"0";
+    }
+    NSString *status = [NSString stringWithFormat:@"$%@/$%@", contributedAmountString, totalContributionNeeded];
+    cell.eventStatus.text = status;
     return cell;
 }
 

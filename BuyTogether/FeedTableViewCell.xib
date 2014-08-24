@@ -14,7 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="organizer_demoProfile.png" translatesAutoresizingMaskIntoConstraints="NO" id="dEB-7L-ix4">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="empty_profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="dEB-7L-ix4">
                         <rect key="frame" x="20" y="27" width="40" height="40"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Birthday Gift for Tony" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2kJ-eB-bif">
@@ -28,13 +28,13 @@
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="contributorOne_demo.png" translatesAutoresizingMaskIntoConstraints="NO" id="i89-rA-1XM">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="empty_profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="i89-rA-1XM">
                         <rect key="frame" x="80" y="72" width="20" height="20"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="contributorTwo_demoProfile.png" translatesAutoresizingMaskIntoConstraints="NO" id="ISt-go-zhm">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="empty_profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="ISt-go-zhm">
                         <rect key="frame" x="103" y="72" width="20" height="20"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="contributorThree_demoProfile.png" translatesAutoresizingMaskIntoConstraints="NO" id="Paz-OW-sw9">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="empty_profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="Paz-OW-sw9">
                         <rect key="frame" x="126" y="72" width="20" height="20"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$135/$450" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3Q-Fu-Gvg">
@@ -58,9 +58,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="contributorOne_demo.png" width="225" height="224"/>
-        <image name="contributorThree_demoProfile.png" width="225" height="225"/>
-        <image name="contributorTwo_demoProfile.png" width="225" height="225"/>
-        <image name="organizer_demoProfile.png" width="160" height="160"/>
+        <image name="empty_profile.png" width="200" height="200"/>
     </resources>
 </document>

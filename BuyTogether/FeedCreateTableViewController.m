@@ -80,12 +80,13 @@
 
     PFObject *dealObject = [PFObject objectWithClassName:kFeedObjectName];
     dealObject[kFeedObjectFeedNameKey] = self.eventName;
+    dealObject[kFeedObjectDescriptionKey] = self.description;
     dealObject[kFeedObjectLinkKey] = self.productLink;
     dealObject[kFeedObjectMinimalContribution] = self.minimalContribution;
-    dealObject[kFeedObjectDescriptionKey] = self.description;
     dealObject[kFeedObjectVenmoAccoutKey] = self.venmoAcount;
+    dealObject[kFeedObjectGoalAmount] = self.fundingGoal;
     NSString *objectid = [PFUser currentUser].objectId;
-    dealObject[@"creatorid"]= objectid;
+    dealObject[@"creatorid"] = objectid;
 
     [dealObject saveInBackground];
     [self dismissViewControllerAnimated:YES completion:^{
@@ -136,33 +137,39 @@
     if ([indexPath row] == 0) {
         self.eventNameCell = [tableView dequeueReusableCellWithIdentifier:FeedFormGeneralItemTableViewCellIdentifier forIndexPath:indexPath];
         self.eventNameCell.itemNameLabel.text = @"Name *";
+        self.eventNameCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return self.eventNameCell;
     }
     else if ([indexPath row] == 1) {
         self.descriptionCell = [tableView dequeueReusableCellWithIdentifier:FeedFormGeneralItemTableViewCellIdentifier forIndexPath:indexPath];
         self.descriptionCell.itemNameLabel.text = @"Description *";
+
         return self.descriptionCell;
     }
     else if ([indexPath row] == 2) {
         self.linkCell = [tableView dequeueReusableCellWithIdentifier:FeedFormGeneralItemTableViewCellIdentifier forIndexPath:indexPath];
         self.linkCell.itemNameLabel.text = @"Link";
+        self.linkCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return self.linkCell;
     }
     else if ([indexPath row] == 3) {
         self.goalCell = [tableView dequeueReusableCellWithIdentifier:FeedFormGeneralItemTableViewCellIdentifier forIndexPath:indexPath];
         self.goalCell.itemNameLabel.text = @"Funding Goal *";
         self.goalCell.itemDataInput.keyboardType = UIKeyboardTypeDecimalPad;
+        self.goalCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return self.goalCell;
     }
     else if ([indexPath row] == 4) {
         self.minimalContributionCell = [tableView dequeueReusableCellWithIdentifier:FeedFormGeneralItemTableViewCellIdentifier forIndexPath:indexPath];
         self.minimalContributionCell.itemNameLabel.text = @"Minimal Contribution *";
         self.minimalContributionCell.itemDataInput.keyboardType = UIKeyboardTypeDecimalPad;
+        self.minimalContributionCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return self.minimalContributionCell;
     }
     else {
         self.venmoCell = [tableView dequeueReusableCellWithIdentifier:FeedFormGeneralItemTableViewCellIdentifier forIndexPath:indexPath];
         self.venmoCell.itemNameLabel.text = @"Venmo *";
+        self.venmoCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return self.venmoCell;
     }
     

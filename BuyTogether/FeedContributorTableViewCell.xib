@@ -14,22 +14,22 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contributors" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r18-bT-nh7">
-                        <rect key="frame" x="6" y="3" width="232" height="21"/>
+                        <rect key="frame" x="6" y="10" width="232" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                         <color key="textColor" red="0.086274512110000007" green="0.74117648599999997" blue="0.15686275059999999" alpha="1" colorSpace="deviceRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="contributorOne_demo.png" translatesAutoresizingMaskIntoConstraints="NO" id="gux-pQ-Chi">
-                        <rect key="frame" x="6" y="32" width="40" height="40"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="empty_profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="gux-pQ-Chi">
+                        <rect key="frame" x="6" y="39" width="40" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="contributorTwo_demoProfile.png" translatesAutoresizingMaskIntoConstraints="NO" id="1pH-jB-FnI">
-                        <rect key="frame" x="54" y="32" width="40" height="40"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="empty_profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="1pH-jB-FnI">
+                        <rect key="frame" x="54" y="39" width="40" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="contributorThree_demoProfile.png" translatesAutoresizingMaskIntoConstraints="NO" id="qMX-Ri-exk">
-                        <rect key="frame" x="102" y="32" width="40" height="40"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="empty_profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="qMX-Ri-exk">
+                        <rect key="frame" x="102" y="39" width="40" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YN4-PX-esk">
@@ -53,18 +53,23 @@
                         <color key="textColor" red="0.086274512110000007" green="0.74117648599999997" blue="0.15686275059999999" alpha="1" colorSpace="deviceRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Become the first among your friends!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6TD-eU-id9">
+                        <rect key="frame" x="18" y="48" width="284" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="14"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="contributorOneProfile" destination="gux-pQ-Chi" id="Bmv-sI-wWr"/>
                 <outlet property="contributorThreeProfile" destination="qMX-Ri-exk" id="XJG-zM-snC"/>
                 <outlet property="contributorTwoProfile" destination="1pH-jB-FnI" id="Lzy-Qn-t9e"/>
+                <outlet property="label" destination="6TD-eU-id9" id="hM7-fs-yne"/>
             </connections>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="contributorOne_demo.png" width="225" height="224"/>
-        <image name="contributorThree_demoProfile.png" width="225" height="225"/>
-        <image name="contributorTwo_demoProfile.png" width="225" height="225"/>
+        <image name="empty_profile.png" width="200" height="200"/>
     </resources>
 </document>

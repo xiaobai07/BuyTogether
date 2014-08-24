@@ -151,7 +151,29 @@
     else if ([indexPath section] == 3) {
         FeedContributorTableViewCell *contributorCell = [tableView dequeueReusableCellWithIdentifier:FeedContributorTableViewCellIdentifier forIndexPath:indexPath];
         contributorCell.selectionStyle = UITableViewCellSelectionStyleNone;
-#warning update
+        
+        NSArray *contributors = self.feedObject[kFeedObjectContributorsKey];
+        if ([contributors count] == 0)
+        {
+            contributorCell.contributorOneProfile.hidden = YES;
+            contributorCell.contributorTwoProfile.hidden = YES;
+            contributorCell.contributorThreeProfile.hidden = YES;
+        }
+        else if ([contributors count] == 1)
+        {
+            contributorCell.contributorTwoProfile.hidden = YES;
+            contributorCell.contributorThreeProfile.hidden = YES;
+            contributorCell.label.hidden = YES;
+        }
+        else if ([contributors count] == 2)
+        {
+            contributorCell.contributorThreeProfile.hidden = YES;
+            contributorCell.label.hidden = YES;
+        }
+        else
+        {
+            contributorCell.label.hidden = YES;
+        }
         return contributorCell;
     }
     else if ([indexPath section] == 4) {
@@ -171,8 +193,13 @@
         self.priceCell.contributedAmount.text = contributedAmountString;
         
         // Total amount
-        NSString *goalAmountString = [NSString stringWithFormat:@"of $%@", self.feedObject[kFeedObjectGoalAmount]];
-        NSLog(@"%@", goalAmountString);
+        NSString *goalAmountString;
+        if (self.feedObject[kFeedObjectGoalAmount]) {
+            goalAmountString = [NSString stringWithFormat:@"of $%@", self.feedObject[kFeedObjectGoalAmount]];
+        }
+        else {
+            goalAmountString = @"of $0";
+        }
         self.priceCell.totalContribution.text = goalAmountString;
         
         // Minimal required contribution string
