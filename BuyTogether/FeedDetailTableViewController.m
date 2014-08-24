@@ -232,6 +232,7 @@
                 contributionButtonCell.buttonlabel.text = @"share to your friend!";
             }
         }
+        contributionButtonCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return contributionButtonCell;
     }
 }
@@ -285,14 +286,17 @@
         [self presentViewController:webNavVC animated:YES completion:nil];
     }
     if ([indexPath section] == 5) {
-        
-//        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//        ViewController *viewController = (ViewController *)[story instantiateViewControllerWithIdentifier:@"start"];
-//        viewController.AccountTextFiedl.text = self.feedObject[@"venmo"];
-//        viewController.feedId = self.feedObject.objectId;
-//        [self.navigationController pushViewController:viewController animated:YES];
-        [self send];
-        
+        NSArray *contributorarray = self.feedObject[kFeedObjectContributorsKey];
+        BOOL found=NO;
+        for (NSDictionary *eachperson in contributorarray) {
+            NSString *cid = eachperson[@"id"];
+            if ([cid isEqualToString:[PFUser currentUser].objectId]) {
+                found = YES;
+            }
+        }
+        if (!found) {
+            [self send];
+        }
     }
     [tableView cellForRowAtIndexPath:indexPath].selected = NO;
 }
