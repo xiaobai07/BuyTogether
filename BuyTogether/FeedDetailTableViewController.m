@@ -205,7 +205,14 @@
             self.priceCell.roleContributionLabel.text = @"Paticipant Contribution";
             self.priceCell.contribution.alpha = 0;
         } else {
-            
+            NSArray *contributorarray = self.feedObject[kFeedObjectContributorsKey];
+            for (NSDictionary *eachperson in contributorarray) {
+                NSString *cid = eachperson[@"id"];
+                if ([cid isEqualToString:[PFUser currentUser].objectId]) {
+                    self.priceCell.roleContributionLabel.text = @"Contributed";
+                    self.priceCell.minimalContribution.alpha = 0;
+                }
+            }
             
         }
         // Collected amount
@@ -318,7 +325,7 @@
             NSString *creatorid = self.feedObject[@"creatorid"];
             if (![creatorid isEqualToString:[PFUser currentUser].objectId]){
                 [self send];
-            }            
+            }
         }
     }
     [tableView cellForRowAtIndexPath:indexPath].selected = NO;
