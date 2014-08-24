@@ -70,7 +70,7 @@
 
 - (void)refresh
 {
-    PFQuery *query = [PFQuery queryWithClassName:@"dealObject"];    
+    PFQuery *query = [PFQuery queryWithClassName:@"dealObject"];
     // Retrieve the object by id
     [query getObjectInBackgroundWithId:self.feedObject.objectId block:^(PFObject *dealObject, NSError *error) {
         
@@ -225,6 +225,13 @@
     }
     else {
         FeedContributeTableViewCell *contributionButtonCell = [tableView dequeueReusableCellWithIdentifier:FeedContributeButtonTableViewCellIdenfier forIndexPath:indexPath];
+        NSArray *contributorarray = self.feedObject[kFeedObjectContributorsKey];
+        for (NSDictionary *eachperson in contributorarray) {
+            NSString *cid = eachperson[@"id"];
+            if ([cid isEqualToString:[PFUser currentUser].objectId]) {
+                contributionButtonCell.buttonlabel.text = @"share to your friend!";
+            }
+        }
         return contributionButtonCell;
     }
 }
@@ -335,8 +342,10 @@
                     [mutablearray addObjectsFromArray:existarray];
                     NSString *userurl = [NSString stringWithFormat:@"%@",[[PFUser currentUser] objectForKey:@"profile"][@"pictureURL"]];
                     NSString *price = self.priceCell.contribution.text;
+                    NSString *contributorid = [PFUser currentUser].objectId;
                     NSDictionary *dictionary = @{@"url": userurl,
-                                                 @"price":price};
+                                                 @"price":price,
+                                                 @"id":contributorid};
                     [mutablearray addObject:dictionary];
                     dealObject[@"contributor"]= mutablearray;
                 }

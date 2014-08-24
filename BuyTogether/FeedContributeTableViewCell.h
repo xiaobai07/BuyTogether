@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface FeedContributeTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIButton *contributeButton;
+@property (strong, nonatomic) IBOutlet UILabel *buttonlabel;
 
 @end

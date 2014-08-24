@@ -23,6 +23,9 @@
                     </label>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="buttonlabel" destination="pZa-Ni-20W" id="7Uk-35-oJP"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>
