@@ -199,7 +199,15 @@
     else if ([indexPath section] == 4) {
         self.priceCell = [tableView dequeueReusableCellWithIdentifier:FeedContributionStatusTableViewCellIdentifier forIndexPath:indexPath];
         self.priceCell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+        NSString *creatorid = self.feedObject[@"creatorid"];
+        if ([creatorid isEqualToString:[PFUser currentUser].objectId]) {
+            self.priceCell.dollarLabel.alpha = 0;
+            self.priceCell.roleContributionLabel.text = @"Paticipant Contribution";
+            self.priceCell.contribution.alpha = 0;
+        } else {
+            
+            
+        }
         // Collected amount
         NSString *contributedAmountString;
         if (self.feedObject[kFeedObjectContributedAmmount])
@@ -209,9 +217,8 @@
         else {
             contributedAmountString = @"$0";
         }
-
-        self.priceCell.contributedAmount.text = contributedAmountString;
         
+        self.priceCell.contributedAmount.text = contributedAmountString;
         // Total amount
         NSString *goalAmountString;
         if (self.feedObject[kFeedObjectGoalAmount]) {
@@ -226,16 +233,23 @@
         NSString *minimalAmountString = [NSString stringWithFormat:@"$%@ minimal", self.feedObject[kFeedObjectMinimalContribution]];
         self.priceCell.minimalContribution.text = minimalAmountString;
         self.priceCell.contribution.text = self.feedObject[kFeedObjectMinimalContribution];
+
         return self.priceCell;
         
     }
     else {
         FeedContributeTableViewCell *contributionButtonCell = [tableView dequeueReusableCellWithIdentifier:FeedContributeButtonTableViewCellIdenfier forIndexPath:indexPath];
+        NSString *creatorid = self.feedObject[@"creatorid"];
+        if ([creatorid isEqualToString:[PFUser currentUser].objectId]) {
+            contributionButtonCell.buttonlabel.text = @"Invite more friends";
+            contributionButtonCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return contributionButtonCell;
+        }
         NSArray *contributorarray = self.feedObject[kFeedObjectContributorsKey];
         for (NSDictionary *eachperson in contributorarray) {
             NSString *cid = eachperson[@"id"];
             if ([cid isEqualToString:[PFUser currentUser].objectId]) {
-                contributionButtonCell.buttonlabel.text = @"share to your friend!";
+                contributionButtonCell.buttonlabel.text = @"Share it";
             }
         }
         contributionButtonCell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -301,7 +315,10 @@
             }
         }
         if (!found) {
-            [self send];
+            NSString *creatorid = self.feedObject[@"creatorid"];
+            if (![creatorid isEqualToString:[PFUser currentUser].objectId]){
+                [self send];
+            }            
         }
     }
     [tableView cellForRowAtIndexPath:indexPath].selected = NO;

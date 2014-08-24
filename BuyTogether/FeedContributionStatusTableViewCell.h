@@ -13,4 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *contribution;
 @property (weak, nonatomic) IBOutlet UILabel *contributedAmount;
 @property (weak, nonatomic) IBOutlet UILabel *totalContribution;
+@property (strong, nonatomic) IBOutlet UILabel *dollarLabel;
+@property (strong, nonatomic) IBOutlet UILabel *roleContributionLabel;
+
 @end
