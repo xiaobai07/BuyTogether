@@ -141,7 +141,6 @@
     [userQuery whereKey:@"objectId" equalTo:creatorid];
     NSArray* userArray = [userQuery findObjects];
     PFObject *user = userArray[0];
-    //NSLog(@"%@",user);
     NSString *usrstring = user[@"profile"][@"pictureURL"];
     [cell.oragnizerProfile setImageWithURL:[NSURL URLWithString:usrstring]];
     cell.eventName.text = oneFeed[@"name"];

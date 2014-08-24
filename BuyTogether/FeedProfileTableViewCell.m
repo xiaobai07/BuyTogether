@@ -13,6 +13,8 @@
 - (void)awakeFromNib
 {
     // Initialization code
+    self.organizerProfile.layer.cornerRadius = 10;
+    self.organizerProfile.clipsToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

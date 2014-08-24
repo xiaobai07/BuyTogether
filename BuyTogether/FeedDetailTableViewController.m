@@ -5,7 +5,7 @@
 //  Created by Zeng Wang on 8/23/14.
 //  Copyright (c) 2014 yuebai. All rights reserved.
 //
-
+#import "UIImageView+AFNetworking.h"
 #import "FeedDetailTableViewController.h"
 #import "FeedProfileTableViewCell.h"
 #import "FeedDescriptionTableViewCell.h"
@@ -121,6 +121,13 @@
         FeedProfileTableViewCell *cellProfile = [tableView dequeueReusableCellWithIdentifier:FeedProfileTableViewCellIdentifier forIndexPath:indexPath];
         cellProfile.selectionStyle = UITableViewCellSelectionStyleNone;
         cellProfile.feedNameLabel.text = self.feedObject[@"name"];
+        NSString *creatorid = self.feedObject[@"creatorid"];
+        PFQuery *userQuery = [PFUser query];
+        [userQuery whereKey:@"objectId" equalTo:creatorid];
+        NSArray* userArray = [userQuery findObjects];
+        PFObject *user = userArray[0];
+        NSString *usrstring = user[@"profile"][@"pictureURL"];
+        [cellProfile.organizerProfile setImageWithURL:[NSURL URLWithString:usrstring]];
         return cellProfile;
     }
     else if ([indexPath section] == 1){
