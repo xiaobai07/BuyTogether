@@ -70,20 +70,23 @@
 
 - (void)postEvent
 {
-#warning xiaobai
     self.eventName = [NSString stringWithString:self.eventNameCell.itemDataInput.text];
     self.description = [NSString stringWithString:self.descriptionCell.itemDataInput.text];
-    self.productLink = [NSURL URLWithString:self.linkCell.itemDataInput.text];
-    
-    NSNumberFormatter * decimalFormat = [[NSNumberFormatter alloc] init];
-    [decimalFormat setNumberStyle:NSNumberFormatterDecimalStyle];
-    self.fundingGoal = [decimalFormat numberFromString:self.goalCell.itemDataInput.text];
-    self.minimalContribution = [decimalFormat numberFromString:self.minimalContributionCell.itemDataInput.text];
+    self.productLink = [NSString stringWithString:self.linkCell.itemDataInput.text];
+    self.fundingGoal = self.goalCell.itemDataInput.text;
+    self.minimalContribution = self.minimalContributionCell.itemDataInput.text;
     self.venmoAcount = [NSString stringWithString:self.venmoCell.itemDataInput.text];
     
-    
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
+    PFObject *dealObject = [PFObject objectWithClassName:@"dealObject"];
+    dealObject[@"name"] = self.eventName;
+    dealObject[@"link"] = self.productLink;
+    dealObject[@"minprice"] = self.minimalContribution;
+    dealObject[@"description"] = self.description;
+    dealObject[@"venmo"] = self.venmoAcount;
+    [dealObject saveInBackground];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"refresh" object:nil];
+    }];
 }
 
 - (void)cancelEvent

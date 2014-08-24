@@ -12,9 +12,9 @@
 
 @property (nonatomic, strong) NSString *eventName;
 @property (nonatomic, strong) NSString *description;
-@property (nonatomic, strong) NSURL *productLink;
-@property (nonatomic, strong) NSNumber *fundingGoal;
-@property (nonatomic, strong) NSNumber *minimalContribution;
+@property (nonatomic, strong) NSString *productLink;
+@property (nonatomic, strong) NSString *fundingGoal;
+@property (nonatomic, strong) NSString *minimalContribution;
 @property (nonatomic, strong) NSString *venmoAcount;
 
 @end

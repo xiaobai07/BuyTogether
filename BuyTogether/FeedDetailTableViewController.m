@@ -29,7 +29,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refresh:) name:@"refresh" object:nil];
     // TableViewCell for feed profile
     UINib *profileNib = [UINib nibWithNibName:FeedProfileTableViewCellIdentifier bundle:nil];
     [self.tableView registerNib:profileNib forCellReuseIdentifier:FeedProfileTableViewCellIdentifier];
@@ -59,7 +58,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)refresh:(NSNotification *)notification
+- (void)refresh
 {
     dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // Add code here to do background processing
@@ -172,12 +171,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([indexPath section] == 4) {
-        
-//        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//        ViewController *viewController = (ViewController *)[story instantiateViewControllerWithIdentifier:@"start"];
-//        viewController.AccountTextFiedl.text = self.feedObject[@"venmo"];
-//        viewController.feedId = self.feedObject.objectId;
-//        [self.navigationController pushViewController:viewController animated:YES];
         [self send];
         
     }
@@ -224,6 +217,7 @@
                     [mutablearray addObject:[[PFUser currentUser] objectForKey:@"profile"][@"name"]];
                 }
                 [dealObject saveInBackground];
+                [self refresh];
                 [[NSNotificationCenter defaultCenter]postNotificationName:@"refresh" object:nil];
                 
             }];
