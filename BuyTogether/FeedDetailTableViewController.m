@@ -13,7 +13,7 @@
 #import "FeedContributionStatusTableViewCell.h"
 #import "FeedContributorTableViewCell.h"
 #import "FeedWebViewTableViewCell.h"
-
+#import "ViewController.h"
 #define FeedProfileTableViewCellIdentifier @"FeedProfileTableViewCell"
 #define FeedDescriptionTableViewIdentifier @"FeedDescriptionTableViewCell"
 #define FeedContributorTableViewCellIdentifier @"FeedContributorTableViewCell"
@@ -29,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refresh:) name:@"refresh" object:nil];
     // TableViewCell for feed profile
     UINib *profileNib = [UINib nibWithNibName:FeedProfileTableViewCellIdentifier bundle:nil];
     [self.tableView registerNib:profileNib forCellReuseIdentifier:FeedProfileTableViewCellIdentifier];
@@ -59,6 +59,19 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)refresh:(NSNotification *)notification
+{
+    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // Add code here to do background processing
+        //
+        [self.feedObject refresh];
+        dispatch_async( dispatch_get_main_queue(), ^{
+            // Add code here to update the UI/send notifications based on the
+            // results of the background processing
+            [self.tableView reloadData];
+        });
+    });
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -151,14 +164,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([indexPath section] == 4) {
-#warning Venmo
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Payment" message:@
-                                  "Thank your for your contribution."delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alertView show];
+        
+        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ViewController *viewController = (ViewController *)[story instantiateViewControllerWithIdentifier:@"start"];
+        viewController.AccountTextFiedl.text = self.feedObject[@"venmo"];
+        viewController.feedId = self.feedObject.objectId;
+        [self.navigationController pushViewController:viewController animated:YES];
+                
     }
     [tableView cellForRowAtIndexPath:indexPath].selected = NO;
 }
-
 
 /*
 // Override to support conditional editing of the table view.

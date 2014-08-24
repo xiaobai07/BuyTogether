@@ -50,6 +50,31 @@
                                                       cancelButtonTitle:nil
                                                       otherButtonTitles:@"OK", nil];
             [alertView show];
+            PFQuery *query = [PFQuery queryWithClassName:@"dealObject"];
+            
+            // Retrieve the object by id
+            [query getObjectInBackgroundWithId:self.feedId block:^(PFObject *dealObject, NSError *error) {
+                
+                // Now let's update it with some new data. In this case, only cheatMode and score
+                // will get sent to the cloud. playerName hasn't changed.
+                if (dealObject[@"currentprice"]==[NSNull null]) {
+                    dealObject[@"currentprice"]= [NSNumber numberWithFloat:[self.priceTextField.text floatValue]];
+                }else{
+                    float currentprice = [dealObject[@"currentprice"] floatValue];
+                    dealObject[@"currentprice"]= [NSNumber numberWithFloat:[self.priceTextField.text floatValue]+currentprice];
+                }
+                if (dealObject[@"contributor"]==[NSNull null]) {
+                    NSArray *namearray = @[[[PFUser currentUser] objectForKey:@"profile"][@"name"]];
+                    dealObject[@"contributor"]=namearray;
+                }else{
+                    NSMutableArray *mutablearray = [[NSMutableArray alloc]init];
+                    [mutablearray addObjectsFromArray:dealObject[@"contributor"]];
+                    [mutablearray addObject:[[PFUser currentUser] objectForKey:@"profile"][@"name"]];
+                }
+                [dealObject saveInBackground];
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"refresh" object:nil];
+                
+            }];
         }
     };
     // Payment
@@ -73,9 +98,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
- 
     return YES;
 }
 @end

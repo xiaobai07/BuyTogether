@@ -14,5 +14,5 @@
 @property (strong, nonatomic) IBOutlet UITextField *AccountTextFiedl;
 @property (strong, nonatomic) IBOutlet UIButton *sendButton;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentControl;
-
+@property (strong, nonatomic)NSString *feedId;
 @end

@@ -148,6 +148,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FeedDetailTableViewController *feedDetailVC = [[FeedDetailTableViewController alloc] init];
+    feedDetailVC.feedObject = [self.feedArray objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:feedDetailVC animated:YES];
 }
 
