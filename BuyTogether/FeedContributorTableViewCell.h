@@ -12,4 +12,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView *contributorOneProfile;
 @property (weak, nonatomic) IBOutlet UIImageView *contributorTwoProfile;
 @property (weak, nonatomic) IBOutlet UIImageView* contributorThreeProfile;
+@property (weak, nonatomic) IBOutlet UILabel *label;
 @end
