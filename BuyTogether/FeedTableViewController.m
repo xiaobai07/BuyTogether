@@ -10,7 +10,6 @@
 #import "FeedTableViewCell.h"
 #import "UserDetailsViewController.h"
 #import "FeedDetailTableViewController.h"
-#import "NewEventViewController.h"
 #import "FeedCreateTableViewController.h"
 #import "UIImageView+AFNetworking.h"
 #define FeedTableViewNibFileName @"FeedTableViewCell"
