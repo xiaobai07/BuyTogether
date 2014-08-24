@@ -130,10 +130,11 @@
         NSString *creatorid = self.feedObject[@"creatorid"];
         PFQuery *userQuery = [PFUser query];
         [userQuery whereKey:@"objectId" equalTo:creatorid];
-        NSArray* userArray = [userQuery findObjects];
-        PFObject *user = userArray[0];
-        NSString *usrstring = user[@"profile"][@"pictureURL"];
-        [cellProfile.organizerProfile setImageWithURL:[NSURL URLWithString:usrstring]];
+        [userQuery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+            PFObject *user = array[0];
+            NSString *usrstring = user[@"profile"][@"pictureURL"];
+            [cellProfile.organizerProfile setImageWithURL:[NSURL URLWithString:usrstring]];
+        }];
         return cellProfile;
     }
     else if ([indexPath section] == 1){
@@ -327,6 +328,7 @@
         }
     };
     // Payment
+    [[Venmo sharedInstance] setDefaultTransactionMethod:VENTransactionMethodAppSwitch];
     [[Venmo sharedInstance] sendPaymentTo:self.feedObject[@"venmo"]
                                    amount:self.priceCell.contribution.text.floatValue*100
                                      note:self.feedObject[@"description"]

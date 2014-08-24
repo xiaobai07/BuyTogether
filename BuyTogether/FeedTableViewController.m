@@ -39,20 +39,13 @@
     // Register tableviewcell classes
     UINib *feedTableViewCellNib = [UINib nibWithNibName:FeedTableViewNibFileName bundle:nil];
     [self.tableView registerNib:feedTableViewCellNib forCellReuseIdentifier:FeedTableViewCellIdentifier];
-    
-    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // Add code here to do background processing
-        //
-        PFQuery *query = [PFQuery queryWithClassName:@"dealObject"];
-        NSArray* array = [query findObjects];
+    PFQuery *query = [PFQuery queryWithClassName:@"dealObject"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+        // comments now contains the comments for myPost
         [self.feedArray removeAllObjects];
         [self.feedArray addObjectsFromArray:array];
-        dispatch_async( dispatch_get_main_queue(), ^{
-            // Add code here to update the UI/send notifications based on the
-            // results of the background processing
-            [self.tableView reloadData];
-        });
-    });
+        [self.tableView reloadData];
+    }];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -63,19 +56,13 @@
 
 - (void)refresh:(NSNotification *)notification
 {
-    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // Add code here to do background processing
-        //
-        PFQuery *query = [PFQuery queryWithClassName:@"dealObject"];
-        NSArray* array = [query findObjects];
+    PFQuery *query = [PFQuery queryWithClassName:@"dealObject"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+        // comments now contains the comments for myPost
         [self.feedArray removeAllObjects];
-        [self.feedArray addObjectsFromArray:array];        
-        dispatch_async( dispatch_get_main_queue(), ^{
-            // Add code here to update the UI/send notifications based on the
-            // results of the background processing
-            [self.tableView reloadData];
-        });
-    });
+        [self.feedArray addObjectsFromArray:array];
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -139,10 +126,12 @@
     NSString *creatorid = oneFeed[@"creatorid"];
     PFQuery *userQuery = [PFUser query];
     [userQuery whereKey:@"objectId" equalTo:creatorid];
-    NSArray* userArray = [userQuery findObjects];
-    PFObject *user = userArray[0];
-    NSString *usrstring = user[@"profile"][@"pictureURL"];
-    [cell.oragnizerProfile setImageWithURL:[NSURL URLWithString:usrstring]];
+    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+        PFObject *user = array[0];
+        NSString *usrstring = user[@"profile"][@"pictureURL"];
+        [cell.oragnizerProfile setImageWithURL:[NSURL URLWithString:usrstring]];
+    }];
+    
     cell.eventName.text = oneFeed[kFeedObjectFeedNameKey];
     
     // Add description

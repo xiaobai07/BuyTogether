@@ -13,7 +13,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
+    [[UINavigationBar appearance]setTintColor:[UIColor colorWithRed:33/255.0f
+                                                              green:169/255.0f
+                                                               blue:24/255.0f
+                                                              alpha:1.0f]];
     // ****************************************************************************
     // Fill in with your Parse credentials:
     // ****************************************************************************
