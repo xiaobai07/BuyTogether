@@ -29,6 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"%@",[[PFUser currentUser] objectForKey:@"profile"][@"name"]);
     // TableViewCell for feed profile
     UINib *profileNib = [UINib nibWithNibName:FeedProfileTableViewCellIdentifier bundle:nil];
     [self.tableView registerNib:profileNib forCellReuseIdentifier:FeedProfileTableViewCellIdentifier];
@@ -108,6 +109,7 @@
     if ([indexPath section] == 0){
         FeedProfileTableViewCell *cellProfile = [tableView dequeueReusableCellWithIdentifier:FeedProfileTableViewCellIdentifier forIndexPath:indexPath];
         cellProfile.selectionStyle = UITableViewCellSelectionStyleNone;
+        cellProfile.feedNameLabel.text = self.feedObject[@"name"];
         return cellProfile;
     }
     else if ([indexPath section] == 1){
@@ -209,12 +211,16 @@
                     dealObject[@"currentprice"]= [NSNumber numberWithFloat:[self.priceCell.contribution.text floatValue]+currentprice];
                 }
                 if (dealObject[@"contributor"]==[NSNull null]) {
-                    NSArray *namearray = @[[[PFUser currentUser] objectForKey:@"profile"][@"name"]];
+                    NSString *user = [NSString stringWithFormat:@"%@",[[PFUser currentUser] objectForKey:@"profile"][@"name"]];
+                    NSArray *namearray = @[user];
                     dealObject[@"contributor"]=namearray;
                 }else{
                     NSMutableArray *mutablearray = [[NSMutableArray alloc]init];
-                    [mutablearray addObjectsFromArray:dealObject[@"contributor"]];
-                    [mutablearray addObject:[[PFUser currentUser] objectForKey:@"profile"][@"name"]];
+                    NSArray *existarray = [NSArray arrayWithArray:dealObject[@"contributor"]];
+                    [mutablearray addObjectsFromArray:existarray];
+                    NSString *user = [NSString stringWithFormat:@"%@",[[PFUser currentUser] objectForKey:@"profile"][@"name"]];
+                    [mutablearray addObject:user];
+                    dealObject[@"contributor"]= mutablearray;
                 }
                 [dealObject saveInBackground];
                 [self refresh];
