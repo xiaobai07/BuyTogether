@@ -13,7 +13,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="event_demoProfile.png" translatesAutoresizingMaskIntoConstraints="NO" id="JhQ-IV-MJv">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="eventProfileBackground.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="JhQ-IV-MJv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
@@ -39,14 +39,13 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="feedNameLabel" destination="avj-N4-SGy" id="MPL-EG-GPK"/>
-                <outlet property="feedProfile" destination="JhQ-IV-MJv" id="kjT-gu-ggX"/>
                 <outlet property="organizerProfile" destination="5Fw-wg-ILB" id="pxl-Fj-1cp"/>
                 <outlet property="timeLabel" destination="acs-b3-vlf" id="U88-2m-Xwc"/>
             </connections>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="event_demoProfile.png" width="619" height="291"/>
+        <image name="eventProfileBackground.jpg" width="640" height="960"/>
         <image name="organizer_demoProfile.png" width="160" height="160"/>
     </resources>
 </document>
