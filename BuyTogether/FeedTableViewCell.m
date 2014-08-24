@@ -18,6 +18,12 @@
     //    self.contributorThreeProfile.hidden = YES;
     self.oragnizerProfile.layer.cornerRadius = 20;
     self.oragnizerProfile.clipsToBounds = YES;
+    self.contributorOneProfile.layer.cornerRadius = 10;
+    self.contributorOneProfile.clipsToBounds = YES;
+    self.contributorTwoProfile.layer.cornerRadius = 10;
+    self.contributorTwoProfile.clipsToBounds = YES;
+    self.contributorThreeProfile.layer.cornerRadius = 10;
+    self.contributorThreeProfile.clipsToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

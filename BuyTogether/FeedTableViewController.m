@@ -133,7 +133,23 @@
     }];
     
     cell.eventName.text = oneFeed[kFeedObjectFeedNameKey];
-    
+    NSArray *contributorarray = oneFeed[kFeedObjectContributorsKey];
+    for (int i=0; i<contributorarray.count; i++) {
+        if (i==0) {
+            NSDictionary *dictionary = contributorarray[i];
+            NSString *usrstring = dictionary[@"url"];
+            [cell.contributorOneProfile setImageWithURL:[NSURL URLWithString:usrstring]];
+        }else if(i == 1){
+            NSDictionary *dictionary = contributorarray[i];
+            NSString *usrstring = dictionary[@"url"];
+            [cell.contributorTwoProfile setImageWithURL:[NSURL URLWithString:usrstring]];
+        }
+        else if(i == 2){
+            NSDictionary *dictionary = contributorarray[i];
+            NSString *usrstring = dictionary[@"url"];
+            [cell.contributorThreeProfile setImageWithURL:[NSURL URLWithString:usrstring]];
+        }
+    }
     // Add description
     cell.eventDescription.text = oneFeed[kFeedObjectDescriptionKey];
     

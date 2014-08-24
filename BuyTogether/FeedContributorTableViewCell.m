@@ -13,6 +13,12 @@
 - (void)awakeFromNib
 {
     // Initialization code
+    self.contributorOneProfile.layer.cornerRadius = 20;
+    self.contributorOneProfile.clipsToBounds = YES;
+    self.contributorTwoProfile.layer.cornerRadius = 20;
+    self.contributorTwoProfile.clipsToBounds = YES;
+    self.contributorThreeProfile.layer.cornerRadius = 20;
+    self.contributorThreeProfile.clipsToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

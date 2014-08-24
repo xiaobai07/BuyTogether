@@ -33,7 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"%@",[[PFUser currentUser] objectForKey:@"profile"][@"name"]);
+    //NSLog(@"%@",[[PFUser currentUser] objectForKey:@"profile"][@"name"]);
     // TableViewCell for feed profile
     UINib *profileNib = [UINib nibWithNibName:FeedProfileTableViewCellIdentifier bundle:nil];
     [self.tableView registerNib:profileNib forCellReuseIdentifier:FeedProfileTableViewCellIdentifier];
@@ -152,21 +152,36 @@
     else if ([indexPath section] == 3) {
         FeedContributorTableViewCell *contributorCell = [tableView dequeueReusableCellWithIdentifier:FeedContributorTableViewCellIdentifier forIndexPath:indexPath];
         contributorCell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        NSArray *contributors = self.feedObject[kFeedObjectContributorsKey];
-        if ([contributors count] == 0)
+        NSArray *contributorarray = self.feedObject[kFeedObjectContributorsKey];
+        for (int i=0; i<contributorarray.count; i++) {
+            if (i==0) {
+                NSDictionary *dictionary = contributorarray[i];
+                NSString *usrstring = dictionary[@"url"];
+                [contributorCell.contributorOneProfile setImageWithURL:[NSURL URLWithString:usrstring]];
+            }else if(i == 1){
+                NSDictionary *dictionary = contributorarray[i];
+                NSString *usrstring = dictionary[@"url"];
+                [contributorCell.contributorTwoProfile setImageWithURL:[NSURL URLWithString:usrstring]];
+            }
+            else if(i == 2){
+                NSDictionary *dictionary = contributorarray[i];
+                NSString *usrstring = dictionary[@"url"];
+                [contributorCell.contributorThreeProfile setImageWithURL:[NSURL URLWithString:usrstring]];
+            }
+        }
+        if ([contributorarray count] == 0)
         {
             contributorCell.contributorOneProfile.hidden = YES;
             contributorCell.contributorTwoProfile.hidden = YES;
             contributorCell.contributorThreeProfile.hidden = YES;
         }
-        else if ([contributors count] == 1)
+        else if ([contributorarray count] == 1)
         {
             contributorCell.contributorTwoProfile.hidden = YES;
             contributorCell.contributorThreeProfile.hidden = YES;
             contributorCell.label.hidden = YES;
         }
-        else if ([contributors count] == 2)
+        else if ([contributorarray count] == 2)
         {
             contributorCell.contributorThreeProfile.hidden = YES;
             contributorCell.label.hidden = YES;
@@ -279,7 +294,8 @@
 
 - (void)send
 {
-    void(^handler)(VENTransaction *, BOOL, NSError *) = ^(VENTransaction *transaction, BOOL success, NSError *error) {
+    void(^handler)(VENTransaction *, BOOL, NSError *) =
+    ^(VENTransaction *transaction, BOOL success, NSError *error) {
         if (error) {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:error.localizedDescription
                                                                 message:error.localizedRecoverySuggestion
@@ -309,15 +325,21 @@
                     dealObject[@"currentprice"]= [NSNumber numberWithFloat:[self.priceCell.contribution.text floatValue]+currentprice];
                 }
                 if (dealObject[@"contributor"]==[NSNull null]) {
-                    NSString *user = [NSString stringWithFormat:@"%@",[[PFUser currentUser] objectForKey:@"profile"][@"name"]];
-                    NSArray *namearray = @[user];
+                    NSString *userurl = [NSString stringWithFormat:@"%@",[[PFUser currentUser] objectForKey:@"profile"][@"pictureURL"]];
+                    NSString *price = self.priceCell.contribution.text;
+                    NSDictionary *dictionary = @{@"url": userurl,
+                                                 @"price":price};
+                    NSArray *namearray = @[dictionary];
                     dealObject[@"contributor"]=namearray;
                 }else{
                     NSMutableArray *mutablearray = [[NSMutableArray alloc]init];
                     NSArray *existarray = [NSArray arrayWithArray:dealObject[@"contributor"]];
                     [mutablearray addObjectsFromArray:existarray];
-                    NSString *user = [NSString stringWithFormat:@"%@",[[PFUser currentUser] objectForKey:@"profile"][@"name"]];
-                    [mutablearray addObject:user];
+                    NSString *userurl = [NSString stringWithFormat:@"%@",[[PFUser currentUser] objectForKey:@"profile"][@"pictureURL"]];
+                    NSString *price = self.priceCell.contribution.text;
+                    NSDictionary *dictionary = @{@"url": userurl,
+                                                 @"price":price};
+                    [mutablearray addObject:dictionary];
                     dealObject[@"contributor"]= mutablearray;
                 }
                 [dealObject saveInBackground];
