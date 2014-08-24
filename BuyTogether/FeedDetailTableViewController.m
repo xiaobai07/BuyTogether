@@ -70,16 +70,14 @@
 
 - (void)refresh
 {
-    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // Add code here to do background processing
-        //
-        [self.feedObject refresh];
-        dispatch_async( dispatch_get_main_queue(), ^{
-            // Add code here to update the UI/send notifications based on the
-            // results of the background processing
-            [self.tableView reloadData];
-        });
-    });
+    PFQuery *query = [PFQuery queryWithClassName:@"dealObject"];    
+    // Retrieve the object by id
+    [query getObjectInBackgroundWithId:self.feedObject.objectId block:^(PFObject *dealObject, NSError *error) {
+        
+        self.feedObject = dealObject;
+        [self.tableView reloadData];
+        
+    }];
 }
 - (void)didReceiveMemoryWarning
 {
