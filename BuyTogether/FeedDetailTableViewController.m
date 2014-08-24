@@ -179,6 +179,11 @@
                 [contributorCell.contributorThreeProfile setImageWithURL:[NSURL URLWithString:usrstring]placeholderImage:[UIImage imageNamed:@"empty_profile"]];
             }
         }
+        if (contributorarray.count>0) {
+            contributorCell.label.hidden = YES;
+        } else {
+            contributorCell.label.hidden = NO;
+        }
 //        if ([contributorarray count] == 0)
 //        {
 //            contributorCell.contributorOneProfile.hidden = YES;
