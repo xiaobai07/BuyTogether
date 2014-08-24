@@ -82,9 +82,12 @@
     PFObject *dealObject = [PFObject objectWithClassName:@"dealObject"];
     dealObject[@"name"] = self.eventName;
     dealObject[@"link"] = self.productLink;
+    dealObject[@"totalprice"]= self.fundingGoal;
     dealObject[@"minprice"] = self.minimalContribution;
     dealObject[@"description"] = self.description;
     dealObject[@"venmo"] = self.venmoAcount;
+    NSString *objectid = [PFUser currentUser].objectId;
+    dealObject[@"creatorid"]= objectid;
     [dealObject saveInBackground];
     [self dismissViewControllerAnimated:YES completion:^{
         [[NSNotificationCenter defaultCenter]postNotificationName:@"refresh" object:nil];

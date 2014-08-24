@@ -14,5 +14,6 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <Venmo-iOS-SDK/Venmo.h>
-    #import <Parse/Parse.h> 
+    #import <Parse/Parse.h>
+    #import "AFNetworking.h"
 #endif

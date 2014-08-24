@@ -12,7 +12,7 @@
 #import "FeedDetailTableViewController.h"
 #import "NewEventViewController.h"
 #import "FeedCreateTableViewController.h"
-
+#import "UIImageView+AFNetworking.h"
 #define FeedTableViewNibFileName @"FeedTableViewCell"
 #define FeedTableViewCellIdentifier @"FeedTableViewCellIdentifier"
 
@@ -133,10 +133,19 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FeedTableViewCellIdentifier forIndexPath:indexPath];
-    
+    FeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FeedTableViewCellIdentifier forIndexPath:indexPath];
     PFObject *oneFeed = [self.feedArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = oneFeed[@"name"];
+    
+    NSString *creatorid = oneFeed[@"creatorid"];
+    PFQuery *userQuery = [PFUser query];
+    [userQuery whereKey:@"objectId" equalTo:creatorid];
+    NSArray* userArray = [userQuery findObjects];
+    PFObject *user = userArray[0];
+    //NSLog(@"%@",user);
+    NSString *usrstring = user[@"profile"][@"pictureURL"];
+    [cell.oragnizerProfile setImageWithURL:[NSURL URLWithString:usrstring]];
+    cell.eventName.text = oneFeed[@"name"];
+    
     return cell;
 }
 

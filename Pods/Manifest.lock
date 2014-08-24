@@ -28,6 +28,7 @@ PODS:
     - VENCore (~> 1.0.0)
 
 DEPENDENCIES:
+  - AFNetworking (~> 2.0)
   - Venmo-iOS-SDK (~> 1.0.0)
 
 SPEC CHECKSUMS:
