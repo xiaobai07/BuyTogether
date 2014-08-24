@@ -11,9 +11,11 @@
 //#import "FeedFormEventProfileTableViewCell.h"
 #import "FeedFormGeneralItemTableViewCell.h"
 
+
 #define FeedFormDescriptionTableViewCellIdentifier @"FeedFormDescriptionTableViewCell"
 //#define FeedFormEventProfileTableViewCellIdentifier @"FeedFormEventProfileTableViewCell"
 #define FeedFormGeneralItemTableViewCellIdentifier @"FeedFormGeneralItemTableViewCell"
+
 
 @interface FeedCreateTableViewController ()
 
@@ -80,8 +82,7 @@
     self.fundingGoal = [decimalFormat numberFromString:self.goalCell.itemDataInput.text];
     self.minimalContribution = [decimalFormat numberFromString:self.minimalContributionCell.itemDataInput.text];
     self.venmoAcount = [NSString stringWithString:self.venmoCell.itemDataInput.text];
-    
-    
+
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

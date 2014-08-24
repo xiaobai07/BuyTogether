@@ -11,7 +11,6 @@
 @interface FeedProfileTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *organizerProfile;
-@property (weak, nonatomic) IBOutlet UIImageView *feedProfile;
 @property (weak, nonatomic) IBOutlet UILabel *feedNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 

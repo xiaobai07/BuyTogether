@@ -14,11 +14,15 @@
 #import "FeedContributorTableViewCell.h"
 #import "FeedWebViewTableViewCell.h"
 #import "ViewController.h"
+#import "FeedLinkTableViewCell.h"
+#import "FeedWebViewController.h"
+
 #define FeedProfileTableViewCellIdentifier @"FeedProfileTableViewCell"
 #define FeedDescriptionTableViewIdentifier @"FeedDescriptionTableViewCell"
 #define FeedContributorTableViewCellIdentifier @"FeedContributorTableViewCell"
 #define FeedContributionStatusTableViewCellIdentifier @"FeedContributionStatusTableViewCell"
 #define FeedContributeButtonTableViewCellIdenfier @"FeedContributeTableViewCell"
+#define FeedLinkTableViewCellIdentifier @"FeedLinkTableViewCell"
 
 @interface FeedDetailTableViewController ()
 @property (nonatomic,strong)FeedContributionStatusTableViewCell *priceCell;
@@ -51,6 +55,11 @@
     UINib *contributeButtonNib = [UINib nibWithNibName:FeedContributeButtonTableViewCellIdenfier bundle:nil];
     [self.tableView registerNib:contributeButtonNib forCellReuseIdentifier:FeedContributeButtonTableViewCellIdenfier];
     
+    // TableViewCell for feed contribute button
+    UINib *linkNib = [UINib nibWithNibName:FeedLinkTableViewCellIdentifier bundle:nil];
+    [self.tableView registerNib:linkNib forCellReuseIdentifier:FeedLinkTableViewCellIdentifier];
+    
+
     self.navigationItem.title = @"Feed Details";
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -84,12 +93,13 @@
 {
     // 1 - Name, FeedProfile, TimeLeft
     // 2 - Description
-    // 3 - Contributors
-    // 4 - Contribution status
-    // 5 - Contribute button
+    // 3 - Link
+    // 4 - Contributors
+    // 5 - Contribution status
+    // 6 - Contribute button
     
     // Return the number of sections.
-    return 5;
+    return 6;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -103,9 +113,10 @@
 {
     // 1 - Name, FeedProfile, TimeLeft
     // 2 - Description
-    // 3 - Contributors
-    // 4 - Contribution status
-    // 5 - Contribute button
+    // 3 - Link
+    // 4 - Contributors
+    // 5 - Contribution status
+    // 6 - Contribute button
     if ([indexPath section] == 0){
         FeedProfileTableViewCell *cellProfile = [tableView dequeueReusableCellWithIdentifier:FeedProfileTableViewCellIdentifier forIndexPath:indexPath];
         cellProfile.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -120,21 +131,24 @@
         return cellDescription;
         
     }
-    else if ([indexPath section] == 2) {
+    else if([indexPath section] == 2){
+        FeedLinkTableViewCell *linkCell = [tableView dequeueReusableCellWithIdentifier:FeedLinkTableViewCellIdentifier forIndexPath:indexPath];
+        return linkCell;
+    }
+    
+    else if ([indexPath section] == 3) {
         FeedContributorTableViewCell *contributorCell = [tableView dequeueReusableCellWithIdentifier:FeedContributorTableViewCellIdentifier forIndexPath:indexPath];
         contributorCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return contributorCell;
     }
-    else if ([indexPath section] == 3) {
+    else if ([indexPath section] == 4) {
         self.priceCell = [tableView dequeueReusableCellWithIdentifier:FeedContributionStatusTableViewCellIdentifier forIndexPath:indexPath];
         self.priceCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return self.priceCell;
     }
-
     else {
         FeedContributeTableViewCell *contributionButtonCell = [tableView dequeueReusableCellWithIdentifier:FeedContributeButtonTableViewCellIdenfier forIndexPath:indexPath];
         return contributionButtonCell;
-        
     }
 }
 
@@ -147,23 +161,27 @@
 {
     // 1 - Name, FeedProfile, TimeLeft
     // 2 - Description
-    // 3 - Contributors
-    // 4 - Contribution status
-    // 5 - Contribute button
+    // 3 - Link
+    // 4 - Contributors
+    // 5 - Contribution status
+    // 6 - Contribute button
     
     if ([indexPath section] == 0) {
         return 80;
     }
     else if ([indexPath section] == 1) {
-        return 175;
-    }
-    else if ([indexPath section] == 2) {
-        return 75;
-    }
-    else if ([indexPath section] == 3) {
         return 100;
     }
+    else if ([indexPath section] == 2) {
+        return 50;
+    }
+    else if ([indexPath section] == 3) {
+        return 90;
+    }
     else if ([indexPath section] == 4) {
+        return 110;
+    }
+    else if ([indexPath section] == 5) {
         return 70;
     }
     return 44;
@@ -171,7 +189,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([indexPath section] == 4) {
+    if ([indexPath section] == 2) {
+        FeedWebViewController *webViewController = [[FeedWebViewController alloc] init];
+        if (webViewController) {
+            FeedLinkTableViewCell *linkCell = (FeedLinkTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+            
+            webViewController.link = linkCell.linkLabel.text;
+        }
+        
+        UINavigationController *webNavVC = [[UINavigationController alloc] initWithRootViewController:webViewController];
+        [self presentViewController:webNavVC animated:YES completion:nil];
+    }
+    if ([indexPath section] == 5) {
         
 //        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //        ViewController *viewController = (ViewController *)[story instantiateViewControllerWithIdentifier:@"start"];

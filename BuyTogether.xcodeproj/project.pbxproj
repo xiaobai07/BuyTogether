@@ -54,6 +54,11 @@
 		BCB2631219A9C314006088BD /* FeedFormEventProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB2631019A9C314006088BD /* FeedFormEventProfileTableViewCell.xib */; };
 		BCB2631619A9C421006088BD /* FeedFormDescriptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB2631419A9C421006088BD /* FeedFormDescriptionTableViewCell.m */; };
 		BCB2631719A9C421006088BD /* FeedFormDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB2631519A9C421006088BD /* FeedFormDescriptionTableViewCell.xib */; };
+		BCB2632019A9EB4C006088BD /* FeedLinkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB2631E19A9EB4C006088BD /* FeedLinkTableViewCell.m */; };
+		BCB2632119A9EB4C006088BD /* FeedLinkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB2631F19A9EB4C006088BD /* FeedLinkTableViewCell.xib */; };
+		BCB2632519A9F199006088BD /* FeedWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB2632319A9F199006088BD /* FeedWebViewController.m */; };
+		BCB2632619A9F199006088BD /* FeedWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB2632419A9F199006088BD /* FeedWebViewController.xib */; };
+		BCB2632A19A9FE90006088BD /* eventProfileBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BCB2632919A9FE90006088BD /* eventProfileBackground.jpg */; };
 		BCB4D86C19A919E5004C7B0B /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB4D86B19A919E5004C7B0B /* FacebookSDK.framework */; };
 		BCB4D87019A91D56004C7B0B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB4D86D19A91D56004C7B0B /* Bolts.framework */; };
 		BCB4D87119A91D56004C7B0B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB4D86E19A91D56004C7B0B /* Parse.framework */; };
@@ -144,6 +149,13 @@
 		BCB2631319A9C421006088BD /* FeedFormDescriptionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedFormDescriptionTableViewCell.h; sourceTree = "<group>"; };
 		BCB2631419A9C421006088BD /* FeedFormDescriptionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedFormDescriptionTableViewCell.m; sourceTree = "<group>"; };
 		BCB2631519A9C421006088BD /* FeedFormDescriptionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedFormDescriptionTableViewCell.xib; sourceTree = "<group>"; };
+		BCB2631D19A9EB4C006088BD /* FeedLinkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedLinkTableViewCell.h; sourceTree = "<group>"; };
+		BCB2631E19A9EB4C006088BD /* FeedLinkTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedLinkTableViewCell.m; sourceTree = "<group>"; };
+		BCB2631F19A9EB4C006088BD /* FeedLinkTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedLinkTableViewCell.xib; sourceTree = "<group>"; };
+		BCB2632219A9F199006088BD /* FeedWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedWebViewController.h; sourceTree = "<group>"; };
+		BCB2632319A9F199006088BD /* FeedWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedWebViewController.m; sourceTree = "<group>"; };
+		BCB2632419A9F199006088BD /* FeedWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedWebViewController.xib; sourceTree = "<group>"; };
+		BCB2632919A9FE90006088BD /* eventProfileBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = eventProfileBackground.jpg; sourceTree = "<group>"; };
 		BCB4D86B19A919E5004C7B0B /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		BCB4D86D19A91D56004C7B0B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		BCB4D86E19A91D56004C7B0B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -269,6 +281,7 @@
 		BCB262BE19A952C8006088BD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BCB2632919A9FE90006088BD /* eventProfileBackground.jpg */,
 				BCB262FF19A9AAF8006088BD /* contribution_percentage.png */,
 				BCB262F119A98286006088BD /* dollar_sign.jpg */,
 				BCB4D87A19A924B0004C7B0B /* login-button-small@2x.png */,
@@ -306,6 +319,9 @@
 				BCB262CF19A966E1006088BD /* FeedDetailTableViewController.m */,
 				BCB2630119A9BE5F006088BD /* FeedCreateTableViewController.h */,
 				BCB2630219A9BE5F006088BD /* FeedCreateTableViewController.m */,
+				BCB2632219A9F199006088BD /* FeedWebViewController.h */,
+				BCB2632319A9F199006088BD /* FeedWebViewController.m */,
+				BCB2632419A9F199006088BD /* FeedWebViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -340,6 +356,9 @@
 				BCB2630E19A9C314006088BD /* FeedFormEventProfileTableViewCell.h */,
 				BCB2630F19A9C314006088BD /* FeedFormEventProfileTableViewCell.m */,
 				BCB2631019A9C314006088BD /* FeedFormEventProfileTableViewCell.xib */,
+				BCB2631D19A9EB4C006088BD /* FeedLinkTableViewCell.h */,
+				BCB2631E19A9EB4C006088BD /* FeedLinkTableViewCell.m */,
+				BCB2631F19A9EB4C006088BD /* FeedLinkTableViewCell.xib */,
 			);
 			name = TableViewCell;
 			sourceTree = "<group>";
@@ -422,6 +441,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCB2632119A9EB4C006088BD /* FeedLinkTableViewCell.xib in Resources */,
 				BCB262C619A952C8006088BD /* organizer_demoProfile.png in Resources */,
 				1A6CD8D919A84D770089F98D /* Images.xcassets in Resources */,
 				BCB262C419A952C8006088BD /* contributorThree_demoProfile.png in Resources */,
@@ -442,6 +462,8 @@
 				BCB4D88819A92728004C7B0B /* FacebookSignupButton.png in Resources */,
 				BCB4D88019A924B0004C7B0B /* TableHeaderView.xib in Resources */,
 				BCB262F019A97F4A006088BD /* FeedContributionStatusTableViewCell.xib in Resources */,
+				BCB2632A19A9FE90006088BD /* eventProfileBackground.jpg in Resources */,
+				BCB2632619A9F199006088BD /* FeedWebViewController.xib in Resources */,
 				BCB262C519A952C8006088BD /* contributorTwo_demoProfile.png in Resources */,
 				BC91BD4619A94CB900882508 /* FeedTableViewCell.xib in Resources */,
 				BCB4D88319A924B0004C7B0B /* login-button-small@2x.png in Resources */,
@@ -503,6 +525,7 @@
 			files = (
 				BCB262D119A966E1006088BD /* FeedDetailTableViewController.m in Sources */,
 				1A6CD8D719A84D770089F98D /* ViewController.m in Sources */,
+				BCB2632019A9EB4C006088BD /* FeedLinkTableViewCell.m in Sources */,
 				BCB2630319A9BE5F006088BD /* FeedCreateTableViewController.m in Sources */,
 				1A6CD8D119A84D770089F98D /* AppDelegate.m in Sources */,
 				BCB262CD19A959A2006088BD /* UserDetailsViewController.m in Sources */,
@@ -519,6 +542,7 @@
 				BCB262EA19A97AF7006088BD /* FeedContributorTableViewCell.m in Sources */,
 				BCB2631619A9C421006088BD /* FeedFormDescriptionTableViewCell.m in Sources */,
 				BCB4D88219A924B0004C7B0B /* LoginViewController.m in Sources */,
+				BCB2632519A9F199006088BD /* FeedWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
