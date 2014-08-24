@@ -397,11 +397,8 @@
 				BCB262F219A98286006088BD /* dollar_sign.jpg in Resources */,
 				BCB4D88419A924B0004C7B0B /* login-button-small.png in Resources */,
 				BCB262E119A96FC1006088BD /* FeedProfileTableViewCell.xib in Resources */,
-<<<<<<< HEAD
 				1A6CD8FB19A98F4B0089F98D /* NewEventViewController.xib in Resources */,
-=======
 				BCB262EB19A97AF7006088BD /* FeedContributorTableViewCell.xib in Resources */,
->>>>>>> 28b6caaaef1361c0975bedb794923ff1ed68dba4
 				BCB262C319A952C8006088BD /* contributorOne_demo.png in Resources */,
 				BCB262F719A985AD006088BD /* FeedContributeTableViewCell.xib in Resources */,
 				1A6CD8CB19A84D770089F98D /* InfoPlist.strings in Resources */,

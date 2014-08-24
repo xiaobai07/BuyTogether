@@ -38,10 +38,19 @@
     UINib *feedTableViewCellNib = [UINib nibWithNibName:FeedTableViewNibFileName bundle:nil];
     [self.tableView registerNib:feedTableViewCellNib forCellReuseIdentifier:FeedTableViewCellIdentifier];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"dealObject"];
-    NSArray* array = [query findObjects];
-    [self.feedArray addObjectsFromArray:array];
-    [self.tableView reloadData];
+    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // Add code here to do background processing
+        //
+        PFQuery *query = [PFQuery queryWithClassName:@"dealObject"];
+        NSArray* array = [query findObjects];
+        [self.feedArray removeAllObjects];
+        [self.feedArray addObjectsFromArray:array];
+        dispatch_async( dispatch_get_main_queue(), ^{
+            // Add code here to update the UI/send notifications based on the
+            // results of the background processing
+            [self.tableView reloadData];
+        });
+    });
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

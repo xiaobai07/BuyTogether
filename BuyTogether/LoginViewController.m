@@ -21,12 +21,7 @@
     if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
         FeedTableViewController *feedViewController = [[FeedTableViewController alloc] initWithStyle:UITableViewStylePlain];
         UINavigationController *feedNavigationController = [[UINavigationController alloc] initWithRootViewController:feedViewController];
-<<<<<<< HEAD
-        [self.navigationController presentViewController:feedNavigationController animated:YES completion:nil];
-=======
-
         [self.navigationController presentViewController:feedNavigationController animated:NO completion:nil];
->>>>>>> 28b6caaaef1361c0975bedb794923ff1ed68dba4
     }
 
 }
@@ -44,12 +39,7 @@
 - (IBAction)loginButtonTouchHandler:(id)sender
 {
     // Set permissions required from the facebook user account
-<<<<<<< HEAD
-    NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location",@"user_friends"];
-=======
     NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location", @"user_friends"];
->>>>>>> 28b6caaaef1361c0975bedb794923ff1ed68dba4
-    
     // Login PFUser using facebook
     [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
         [_activityIndicator stopAnimating]; // Hide loading indicator
@@ -75,13 +65,9 @@
             NSLog(@"User with facebook logged in!");
             FeedTableViewController *feedViewController = [[FeedTableViewController alloc] initWithStyle:UITableViewStylePlain];
             UINavigationController *feedNavigationController = [[UINavigationController alloc] initWithRootViewController:feedViewController];
-            
-<<<<<<< HEAD
-            [self.navigationController presentViewController:feedNavigationController animated:YES completion:nil];
+            [self.navigationController presentViewController:feedNavigationController animated:NO completion:nil];
         }
-=======
-            [self.navigationController presentViewController:feedNavigationController animated:NO completion:nil];        }
->>>>>>> 28b6caaaef1361c0975bedb794923ff1ed68dba4
+
     }];
     
     [_activityIndicator startAnimating]; // Show loading indicator until login is finished
