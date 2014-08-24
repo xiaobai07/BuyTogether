@@ -13,12 +13,12 @@
     [super viewDidLoad];
 
     
-    self.title = @"Facebook Profile";
-    self.tableView.backgroundColor = [UIColor colorWithRed:230.0f/255.0f green:230.0f/255.0f blue:230.0f/255.0f alpha:1.0f];
+    self.title = @"Profile";
+    //self.tableView.backgroundColor = [UIColor colorWithRed:230.0f/255.0f green:230.0f/255.0f blue:230.0f/255.0f alpha:1.0f];
     
     // Add logout navigation bar button
     UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonTouchHandler:)];
-    self.navigationItem.leftBarButtonItem = logoutButton;
+    self.navigationItem.rightBarButtonItem = logoutButton;
     
     // Load table header view from nib
     [[NSBundle mainBundle] loadNibNamed:@"TableHeaderView" owner:self options:nil];
@@ -167,10 +167,11 @@
 
 - (void)logoutButtonTouchHandler:(id)sender {
     // Logout user, this automatically clears the cache
+    NSLog(@"%@ %@ %@ %@",self.presentingViewController, self.presentedViewController, self.navigationController, self.navigationController.childViewControllers);
     [PFUser logOut];
     
     // Return to login view controller
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 // Set received values if they are not nil and reload the table
