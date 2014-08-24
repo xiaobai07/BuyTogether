@@ -73,6 +73,12 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    //[self refresh];
+}
+
 - (void)refresh
 {
     PFQuery *query = [PFQuery queryWithClassName:@"dealObject"];
@@ -384,7 +390,7 @@
                     dealObject[@"contributor"]= mutablearray;
                 }
                 [dealObject saveInBackground];
-                [self refresh];
+                [self performSelector:@selector(refresh) withObject:nil afterDelay:2];
                 [[NSNotificationCenter defaultCenter]postNotificationName:@"refresh" object:nil];
                 
             }];
