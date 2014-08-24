@@ -51,7 +51,7 @@
     UINib *contributeButtonNib = [UINib nibWithNibName:FeedContributeButtonTableViewCellIdenfier bundle:nil];
     [self.tableView registerNib:contributeButtonNib forCellReuseIdentifier:FeedContributeButtonTableViewCellIdenfier];
     
-    self.navigationItem.title = @"Feed Detail";
+    self.navigationItem.title = @"Feed Details";
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -111,6 +111,7 @@
     }
     else if ([indexPath section] == 3) {
         FeedContributionStatusTableViewCell *contributionStatus = [tableView dequeueReusableCellWithIdentifier:FeedContributionStatusTableViewCellIdentifier forIndexPath:indexPath];
+        contributionStatus.contribution.delegate = self;
         contributionStatus.selectionStyle = UITableViewCellSelectionStyleNone;
         return contributionStatus;
     }
@@ -120,6 +121,11 @@
         return contributionButtonCell;
         
     }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    return YES;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

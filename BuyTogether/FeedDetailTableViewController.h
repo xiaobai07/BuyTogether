@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FeedDetailTableViewController : UITableViewController
+@interface FeedDetailTableViewController : UITableViewController<UITextFieldDelegate>
+
 
 @end
