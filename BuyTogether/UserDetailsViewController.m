@@ -41,6 +41,7 @@
         // handle response
         if (!error) {
             // Parse the data received
+            NSLog(@"%@",result);
             NSDictionary *userData = (NSDictionary *)result;
             
             NSString *facebookID = userData[@"id"];
@@ -189,6 +190,7 @@
     }
     
     if ([[PFUser currentUser] objectForKey:@"profile"][@"relationship"]) {
+        NSLog(@"%@",[[PFUser currentUser] objectForKey:@"profile"][@"relationship"]);
         [self.rowDataArray replaceObjectAtIndex:3 withObject:[[PFUser currentUser] objectForKey:@"profile"][@"relationship"]];
     }
     

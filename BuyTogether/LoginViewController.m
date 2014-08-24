@@ -10,15 +10,16 @@
 
 #pragma mark - UIViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(login:) name:@"login" object:self];
     //self.title = @"Facebook Profile";
     
     // Check if user is cached and linked to Facebook, if so, bypass login    
     if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
         FeedTableViewController *feedViewController = [[FeedTableViewController alloc] initWithStyle:UITableViewStylePlain];
         UINavigationController *feedNavigationController = [[UINavigationController alloc] initWithRootViewController:feedViewController];
-
         [self.navigationController presentViewController:feedNavigationController animated:YES completion:nil];
     }
 
@@ -34,9 +35,10 @@
 #pragma mark - Login mehtods
 
 /* Login to facebook method */
-- (IBAction)loginButtonTouchHandler:(id)sender  {
+- (IBAction)loginButtonTouchHandler:(id)sender
+{
     // Set permissions required from the facebook user account
-    NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location"];
+    NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location",@"user_friends"];
     
     // Login PFUser using facebook
     [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
@@ -64,7 +66,8 @@
             FeedTableViewController *feedViewController = [[FeedTableViewController alloc] initWithStyle:UITableViewStylePlain];
             UINavigationController *feedNavigationController = [[UINavigationController alloc] initWithRootViewController:feedViewController];
             
-            [self.navigationController presentViewController:feedNavigationController animated:YES completion:nil];        }
+            [self.navigationController presentViewController:feedNavigationController animated:YES completion:nil];
+        }
     }];
     
     [_activityIndicator startAnimating]; // Show loading indicator until login is finished

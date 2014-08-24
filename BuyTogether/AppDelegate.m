@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import "LoginViewController.h"
-
+#import <FacebookSDK/FacebookSDK.h>
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -18,7 +18,7 @@
     // ****************************************************************************
     // Fill in with your Parse credentials:
     // ****************************************************************************
-    [Parse setApplicationId:@"Gw8gq0cwugPJOMZ0KUxEzuRnvsgp8pv4Auowm3cp" clientKey:@"jiO0m40zXL32caA57C1A0bqxl922Qe5dShztFdA1"];
+    [Parse setApplicationId:@"HZy3BcNvHq6ioNRSkJMMC9O3klpbzGCigu7kHTgJ" clientKey:@"pCPbte6AjX5mpIXPm18X4vbJaE5sDYKw2hkAVOVk"];
     
     // ****************************************************************************
     // Your Facebook application id is configured in Info.plist.
@@ -44,6 +44,11 @@
     }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    //NSLog(@"%@",url);
+    NSString *urlString = [url absoluteString];
+    if ([[urlString substringToIndex:2] isEqualToString:@"fb"]) {
+        return [PFFacebookUtils handleOpenURL:url];
+    }
     if ([[Venmo sharedInstance] handleOpenURL:url]) {
         return YES;
     }
@@ -70,9 +75,11 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    // Handle the user leaving the app while the Facebook login dialog is being shown
+    // For example: when the user presses the iOS "home" button while the login dialog is active
+    [FBAppCall handleDidBecomeActive];
 }
-
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.

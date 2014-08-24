@@ -30,6 +30,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>venmo1914</string>
+				<string>fb1546962888860835</string>
 			</array>
 		</dict>
 	</array>
@@ -52,15 +53,6 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>URLTypes</key>
-	<array>
-		<dict>
-			<key>URL Schemes</key>
-			<array>
-				<string>fb1546962888860835</string>
-			</array>
-		</dict>
 	</array>
 </dict>
 </plist>
