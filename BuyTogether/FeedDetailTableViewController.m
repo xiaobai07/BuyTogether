@@ -117,6 +117,12 @@
     // 4 - Contributors
     // 5 - Contribution status
     // 6 - Contribute button
+//    PFObject *dealObject = [PFObject objectWithClassName:@"dealObject"];
+//    dealObject[@"name"] = self.eventName;
+//    dealObject[@"link"] = self.productLink;
+//    dealObject[@"minprice"] = self.minimalContribution;
+//    dealObject[@"description"] = self.description;
+//    dealObject[@"venmo"] = self.venmoAcount;
     if ([indexPath section] == 0){
         FeedProfileTableViewCell *cellProfile = [tableView dequeueReusableCellWithIdentifier:FeedProfileTableViewCellIdentifier forIndexPath:indexPath];
         cellProfile.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -132,27 +138,49 @@
     }
     else if ([indexPath section] == 1){
         FeedDescriptionTableViewCell *cellDescription = [tableView dequeueReusableCellWithIdentifier:FeedDescriptionTableViewIdentifier forIndexPath:indexPath];
-        NSURL *url = [NSURL URLWithString:@"https://www.google.com"];
-        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        [cellDescription.webView loadRequest:request];
-        cellDescription.selectionStyle = UITableViewCellSelectionStyleNone;
+                cellDescription.selectionStyle = UITableViewCellSelectionStyleNone;
+        cellDescription.descriptionTextView.text = self.feedObject[kFeedObjectDescriptionKey];
         return cellDescription;
-        
     }
     else if([indexPath section] == 2){
         FeedLinkTableViewCell *linkCell = [tableView dequeueReusableCellWithIdentifier:FeedLinkTableViewCellIdentifier forIndexPath:indexPath];
+        linkCell.linkLabel.text = self.feedObject[kFeedObjectLinkKey];
         return linkCell;
     }
     
     else if ([indexPath section] == 3) {
         FeedContributorTableViewCell *contributorCell = [tableView dequeueReusableCellWithIdentifier:FeedContributorTableViewCellIdentifier forIndexPath:indexPath];
         contributorCell.selectionStyle = UITableViewCellSelectionStyleNone;
+#warning update
         return contributorCell;
     }
     else if ([indexPath section] == 4) {
         self.priceCell = [tableView dequeueReusableCellWithIdentifier:FeedContributionStatusTableViewCellIdentifier forIndexPath:indexPath];
         self.priceCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        // Collected amount
+        NSString *contributedAmountString;
+        if (self.feedObject[kFeedObjectContributedAmmount])
+        {
+            contributedAmountString = [NSString stringWithFormat:@"$%@", self.feedObject[kFeedObjectContributedAmmount]];
+        }
+        else {
+            contributedAmountString = @"$0";
+        }
+
+        self.priceCell.contributedAmount.text = contributedAmountString;
+        
+        // Total amount
+        NSString *goalAmountString = [NSString stringWithFormat:@"of $%@", self.feedObject[kFeedObjectGoalAmount]];
+        NSLog(@"%@", goalAmountString);
+        self.priceCell.totalContribution.text = goalAmountString;
+        
+        // Minimal required contribution string
+        NSString *minimalAmountString = [NSString stringWithFormat:@"$%@ minimal", self.feedObject[kFeedObjectMinimalContribution]];
+        self.priceCell.minimalContribution.text = minimalAmountString;
+        self.priceCell.contribution.text = self.feedObject[kFeedObjectMinimalContribution];
         return self.priceCell;
+        
     }
     else {
         FeedContributeTableViewCell *contributionButtonCell = [tableView dequeueReusableCellWithIdentifier:FeedContributeButtonTableViewCellIdenfier forIndexPath:indexPath];
