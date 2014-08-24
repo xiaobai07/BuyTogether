@@ -113,6 +113,9 @@
     }
     else if ([indexPath section] == 1){
         FeedDescriptionTableViewCell *cellDescription = [tableView dequeueReusableCellWithIdentifier:FeedDescriptionTableViewIdentifier forIndexPath:indexPath];
+        NSURL *url = [NSURL URLWithString:@"https://www.google.com"];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        [cellDescription.webView loadRequest:request];
         cellDescription.selectionStyle = UITableViewCellSelectionStyleNone;
         return cellDescription;
         

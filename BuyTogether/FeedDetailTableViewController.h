@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FeedDetailTableViewController : UITableViewController<UIAlertViewDelegate>
+@interface FeedDetailTableViewController : UITableViewController<UIAlertViewDelegate,UIWebViewDelegate>
 @property (nonatomic,strong)PFObject *feedObject;
 @end
